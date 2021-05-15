@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="HistoryListItem.cs" />
     <Compile Include="HistoryCreate.cs" />
+    <Compile Include="LocationCreate.cs" />
+    <Compile Include="LocationListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
