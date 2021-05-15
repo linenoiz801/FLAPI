@@ -103,10 +103,10 @@ namespace FLAPI.Services
                 if (query != null)
                 {
                     query.CharacterName = model.CharacterName;
-                    query.Age == model.Age;
-                    query.Affiliation == model.Affiliation;
-                    query.IsNPC == model.IsNPC;
-                    query.IsHostile == model.IsHostile;
+                    query.Age = model.Age;
+                    query.Affiliation = model.Affiliation;
+                    query.IsNPC = model.IsNPC;
+                    query.IsHostile = model.IsHostile;
                     return ctx.SaveChanges() == 1;
                 }
                 else
