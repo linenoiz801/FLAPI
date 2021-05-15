@@ -33,5 +33,6 @@ namespace FLAPI.Data
         public DbSet<History> Histories { get; set; }
         public DbSet<Perk> Perks { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Character> Characters { get; set; }
     }
 }
