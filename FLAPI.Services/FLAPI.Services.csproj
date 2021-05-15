@@ -57,7 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArmorService.cs" />
+    <Compile Include="PerkService.cs" />
     <Compile Include="LocationService.cs" />
+    <Compile Include="HistoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

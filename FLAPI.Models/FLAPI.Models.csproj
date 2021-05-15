@@ -57,10 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArmorCreate.cs" />
+    <Compile Include="ArmorListItem.cs" />
     <Compile Include="HistoryListItem.cs" />
     <Compile Include="HistoryCreate.cs" />
     <Compile Include="LocationCreate.cs" />
     <Compile Include="LocationListItem.cs" />
+    <Compile Include="PerkCreate.cs" />
+    <Compile Include="PerkListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -31,6 +31,8 @@ namespace FLAPI.Data
             return new ApplicationDbContext();
         }
         public DbSet<History> Histories { get; set; }
+        public DbSet<Perk> Perks { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Armor> Armors { get; set; }
     }
 }
