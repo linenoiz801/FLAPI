@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FLAPI.Models
 {
-    public class HistoryCreate
+    public class HistoryListItem
     {
+        public int Id { get; set; }
         public string EventName { get; set; }
         public DateTime EventDate { get; set; }
         public string Description { get; set; }
