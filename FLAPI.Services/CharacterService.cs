@@ -115,5 +115,24 @@ namespace FLAPI.Services
                 }
             }
         }
+        public bool DeleteHistory(int characterId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Characters
+                        .SingleOrDefault(e => e.CharacterId == characterId);
+
+                if (query != null)
+                {
+                    ctx.Characters.Remove(query);
+                    return ctx.SaveChanges() == 1;
+                }
+                else
+                    return false;
+            }
+        }
+
     }
 }
