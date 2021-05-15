@@ -4,15 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FLAPI.Data
+namespace FLAPI.Models
 {
-    public class Games
+    public class GameListItem
     {
-        //Id int[pk, increment]
-        //GameName string
-        //ReleaseDate datetime
-        //Description string
-
         public int Id { get; set; }
         public string GameName { get; set; }
         public DateTime ReleaseDate { get; set; }

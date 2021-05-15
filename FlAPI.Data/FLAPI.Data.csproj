@@ -87,7 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Games.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Armor.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="History.cs" />
