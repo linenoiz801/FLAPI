@@ -90,6 +90,7 @@
     <Compile Include="Location.cs" />
     <Compile Include="History.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Perk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
