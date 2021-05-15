@@ -46,5 +46,51 @@ namespace FLAPI.Services
             }
 
         }
+        public LocationListItem GetLocationById(int locationId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Locations
+                    .Single(e => e.Id == locationId);
+                    return
+                    new LocationListItem
+                    {
+                        Id=entity.Id,
+                        Name=entity.Name,
+                        Country=entity.Country,
+                        MetroArea=entity.MetroArea
+                    };
+            }
+        }
+        public bool DeleteLocation(int locationId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Locations
+                    .Single(e => e.Id == locationId);
+                ctx.Locations.Remove(entity);
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+        public bool UpdateLocation(LocationListItem model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Locations
+                    .Single(e => e.Id==model.Id);
+                entity.MetroArea = model.MetroArea;
+                entity.Name = model.Name;
+                entity.Country = model.Country;
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
     }
 }
