@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FLAPI.Services
 {
-    class CharacterService
+    public class CharacterService
     {
+
     }
 }

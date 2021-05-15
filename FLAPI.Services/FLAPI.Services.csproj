@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterService.cs" />
     <Compile Include="PerkService.cs" />
     <Compile Include="LocationService.cs" />
     <Compile Include="HistoryService.cs" />
