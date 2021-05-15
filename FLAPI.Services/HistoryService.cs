@@ -26,7 +26,7 @@ namespace FLAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        private List<HistoryListItem> GetHistoriesByGameId(int GameId)
+        public List<HistoryListItem> GetHistoriesByGameId(int GameId)
         {
             List<HistoryListItem> result = new List<HistoryListItem>();
             using (var ctx = new ApplicationDbContext())
