@@ -61,6 +61,8 @@
     <Compile Include="HistoryCreate.cs" />
     <Compile Include="LocationCreate.cs" />
     <Compile Include="LocationListItem.cs" />
+    <Compile Include="PerkCreate.cs" />
+    <Compile Include="PerkListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
