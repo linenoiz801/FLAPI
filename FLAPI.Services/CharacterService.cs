@@ -91,5 +91,29 @@ namespace FLAPI.Services
                 return query.ToList();
             }
         }
+        public bool UpdateCharacter(CharacterListItem model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Characters
+                        .SingleOrDefault(e => e.CharacterId == model.CharacterId);
+
+                if (query != null)
+                {
+                    query.CharacterName = model.CharacterName;
+                    query.Age == model.Age;
+                    query.Affiliation == model.Affiliation;
+                    query.IsNPC == model.IsNPC;
+                    query.IsHostile == model.IsHostile;
+                    return ctx.SaveChanges() == 1;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
