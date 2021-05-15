@@ -7,8 +7,8 @@
     <ProjectGuid>{278E0623-BA5F-4F83-8D7B-56AA292E8708}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FlAPI.Data</RootNamespace>
-    <AssemblyName>FlAPI.Data</AssemblyName>
+    <RootNamespace>FLAPI.Data</RootNamespace>
+    <AssemblyName>FLAPI.Data</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="History.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
