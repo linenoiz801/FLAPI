@@ -10,9 +10,6 @@ namespace FLAPI.Services
 {
     public class CharacterService
     {
-        public CharacterService()
-        {
-        }
         public bool CreateCharacter(CharacterCreate model)
         {
             var entity =
@@ -50,6 +47,48 @@ namespace FLAPI.Services
                             }
                             );
                 return query.ToArray();
+            }
+        }
+        public CharacterListItem GetCharacterById(int characterId)
+        {
+            CharacterListItem result = new CharacterListItem();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Characters
+                        .Single(b => b.CharacterId == characterId);
+                result.CharacterId = query.CharacterId;
+                result.CharacterName = query.CharacterName;
+                result.Age = query.Age;
+                result.Affiliation = query.Affiliation;
+                result.IsNPC = query.IsNPC;
+                result.IsHostile = query.IsHostile;
+
+                return result;
+            }
+        }
+        public List<CharacterListItem> GetCharacterByGameId(int GameId)
+        {
+            List<CharacterListItem> result = new List<CharacterListItem>();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Characters
+                        //.Where(e => e.GameId == gameId) //TODO: Cant do this part until the foreign keys are added
+                        .Select(
+                        e => new CharacterListItem
+                        {
+                            CharacterId = e.CharacterId,
+                            CharacterName = e.CharacterName,
+                            Age = e.Age,
+                            Affiliation = e.Affiliation,
+                            IsNPC = e.IsNPC,
+                            IsHostile = e.IsHostile
+                        }
+                    );
+                return query.ToList();
             }
         }
     }
