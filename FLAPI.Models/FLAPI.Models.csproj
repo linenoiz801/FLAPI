@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArmorCreate.cs" />
+    <Compile Include="ArmorListItem.cs" />
     <Compile Include="HistoryListItem.cs" />
     <Compile Include="HistoryCreate.cs" />
     <Compile Include="LocationCreate.cs" />

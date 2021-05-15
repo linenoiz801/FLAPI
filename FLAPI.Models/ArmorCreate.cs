@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FLAPI.Data
+namespace FLAPI.Models
 {
-    public class Armor
+    public class ArmorCreate
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
         public string Prereq { get; set; }
         public string Description { get; set; }
