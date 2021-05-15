@@ -32,5 +32,6 @@ namespace FLAPI.Data
         }
         public DbSet<History> Histories { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Game> Games { get; set; }
     }
 }

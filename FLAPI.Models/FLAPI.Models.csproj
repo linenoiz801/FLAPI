@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameCreate.cs" />
-    <Compile Include="GamesListItem.cs" />
+    <Compile Include="GameListItem.cs" />
     <Compile Include="HistoryListItem.cs" />
     <Compile Include="HistoryCreate.cs" />
     <Compile Include="LocationCreate.cs" />
