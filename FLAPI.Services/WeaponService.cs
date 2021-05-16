@@ -91,22 +91,22 @@ namespace FLAPI.Services
                 return query.ToList();
             }
         }
-        public bool UpdateCharacter(CharacterListItem model)
+        public bool UpdateWeapon(WeaponListItem model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Characters
-                        .SingleOrDefault(e => e.CharacterId == model.CharacterId);
+                        .Weapons
+                        .SingleOrDefault(e => e.WeaponId == model.WeaponId);
 
                 if (query != null)
                 {
-                    query.CharacterName = model.CharacterName;
-                    query.Age = model.Age;
-                    query.Affiliation = model.Affiliation;
-                    query.IsNPC = model.IsNPC;
-                    query.IsHostile = model.IsHostile;
+                    query.WeaponName = model.WeaponName;
+                    query.WeaponType = model.WeaponType;
+                    query.AmmoType = model.AmmoType;
+                    query.BaseDamage = model.BaseDamage;
+                    query.Description = model.Description;
                     return ctx.SaveChanges() == 1;
                 }
                 else
