@@ -27,43 +27,43 @@ namespace FLAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<CharacterListItem> GetCharacters()
+        public IEnumerable<WeaponListItem> GetWeapons()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Characters
+                        .Weapons
                         .Select(
                             e =>
-                            new CharacterListItem
+                            new WeaponListItem
                             {
-                                CharacterId = e.CharacterId,
-                                CharacterName = e.CharacterName,
-                                Age = e.Age,
-                                Affiliation = e.Affiliation,
-                                IsNPC = e.IsNPC,
-                                IsHostile = e.IsHostile
+                                WeaponId = e.WeaponId,
+                                WeaponName = e.WeaponName,
+                                WeaponType = e.WeaponType,
+                                AmmoType = e.AmmoType,
+                                BaseDamage = e.BaseDamage,
+                                Description = e.Description
                             }
                             );
                 return query.ToArray();
             }
         }
-        public CharacterListItem GetCharacterById(int characterId)
+        public WeaponListItem GetWeaponById(int weaponId)
         {
-            CharacterListItem result = new CharacterListItem();
+            WeaponListItem result = new WeaponListItem();
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Characters
-                        .Single(b => b.CharacterId == characterId);
-                result.CharacterId = query.CharacterId;
-                result.CharacterName = query.CharacterName;
-                result.Age = query.Age;
-                result.Affiliation = query.Affiliation;
-                result.IsNPC = query.IsNPC;
-                result.IsHostile = query.IsHostile;
+                        .Weapons
+                        .Single(b => b.WeaponId == weaponId);
+                result.WeaponId = query.WeaponId;
+                result.WeaponName = query.WeaponName;
+                result.WeaponType = query.WeaponType;
+                result.AmmoType = query.AmmoType;
+                result.BaseDamage = query.BaseDamage;
+                result.Description = query.Description;
 
                 return result;
             }
