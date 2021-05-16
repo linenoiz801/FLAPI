@@ -68,24 +68,24 @@ namespace FLAPI.Services
                 return result;
             }
         }
-        public List<CharacterListItem> GetCharacterByGameId(int GameId)
+        public List<WeaponListItem> GetWeaponByGameId(int gameId)
         {
-            List<CharacterListItem> result = new List<CharacterListItem>();
+            List<WeaponListItem> result = new List<WeaponListItem>();
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Characters
+                        .Weapons
                         //.Where(e => e.GameId == gameId) //TODO: Cant do this part until the foreign keys are added
                         .Select(
-                        e => new CharacterListItem
+                        e => new WeaponListItem
                         {
-                            CharacterId = e.CharacterId,
-                            CharacterName = e.CharacterName,
-                            Age = e.Age,
-                            Affiliation = e.Affiliation,
-                            IsNPC = e.IsNPC,
-                            IsHostile = e.IsHostile
+                            WeaponId = e.WeaponId,
+                            WeaponName = e.WeaponName,
+                            WeaponType = e.WeaponType,
+                            AmmoType = e.AmmoType,
+                            BaseDamage = e.BaseDamage,
+                            Description = e.Description
                         }
                     );
                 return query.ToList();
