@@ -1,4 +1,4 @@
-﻿using System;
+﻿]using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace FLAPI.Models
 {
-    class WeaponCreate
+    public class WeaponCreate
     {
+        public string WeaponName { get; set; }
+        public string Description { get; set; }
+        public string AmmoType { get; set; }
+        public string WeaponType { get; set; }
+        public string BaseDamage { get; set; }
+        // public enum AmmoType TypeOfAmmo { get; set; }
+        // public enum WeaponType TypeOfWeapon { get; set; }
     }
 }
