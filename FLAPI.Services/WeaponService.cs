@@ -115,18 +115,18 @@ namespace FLAPI.Services
                 }
             }
         }
-        public bool DeleteHistory(int characterId)
+        public bool DeleteWeapon(int weaponId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Characters
-                        .SingleOrDefault(e => e.CharacterId == characterId);
+                        .Weapons
+                        .SingleOrDefault(e => e.WeaponId == weaponId);
 
                 if (query != null)
                 {
-                    ctx.Characters.Remove(query);
+                    ctx.Weapons.Remove(query);
                     return ctx.SaveChanges() == 1;
                 }
                 else
