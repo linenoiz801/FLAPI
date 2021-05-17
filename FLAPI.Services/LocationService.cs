@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FLAPI.Services
 {
-    class LocationService
+    public class LocationService
     {
 
         public bool CreateLocation(LocationCreate model)
