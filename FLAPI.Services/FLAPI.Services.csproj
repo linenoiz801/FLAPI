@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterService.cs" />
     <Compile Include="GamesServices.cs" />
     <Compile Include="ArmorService.cs" />
     <Compile Include="PerkService.cs" />
