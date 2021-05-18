@@ -36,5 +36,7 @@ namespace FLAPI.Data
         public DbSet<Character> Characters { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Armor> Armors { get; set; }
+        public DbSet<Vault> Vaults { get; set; }
+
     }
 }
