@@ -43,5 +43,43 @@ namespace FLAPI.Services
                 return query.ToArray();
             }
         }
+
+        public VaultListItem GetVaultById(int vaultId)
+        {
+            VaultListItem result = new VaultListItem();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Vaults
+                    .Single(b => b.Id == vaultId);
+                result.VaultId = query.Id;
+                result.VaultName = query.VaultName;
+                result.VaultNumber = query.VaultNumber;
+
+                return result;
+            }
+        }
+        public List<VaultListItem> GetVaultsByGameId(int GameId)
+        {
+            List<VaultListItem> result = new List<VaultListItem>();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Vaults
+                    //.Where(e => e.GameId == gameId) //TODO: Can't do this part until the foreign keys are added
+                    .Select(
+                        e => new VaultListItem
+                        {
+                            VaultId = e.Id,
+                            VaultName = e.VaultName,
+                            VaultNumber = e.VaultNumber
+                        }
+                        );
+                return query.ToList();
+            }
+        }
     }
 }
+
