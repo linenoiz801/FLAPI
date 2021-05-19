@@ -4,28 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FLAPI.Data
+namespace FLAPI.Models
 {
-    //public enum AmmoType
-    //{
-    //    None,
-
-    //}
-    //public enum WeaponType
-    //{
-    //    Unarmed,
-    //    Melee,
-    //    Pistol,
-    //    SMG,
-    //    Rifle,
-    //    Shotgun,
-    //    Unique,
-    //    EnergyPistol,
-    //    EnergyRifle,
-    //    Throwing,
-    //    Trap
-    //}
-    public class Weapon
+    public class WeaponListItem
     {
         public int WeaponId { get; set; }
         public string WeaponName { get; set; }
