@@ -92,27 +92,27 @@ namespace FLAPI.Services
 
             }
         }
-        public List<LocationListItem> GetLocationsByGameId(int GAmeId)
+        public List<LocationListItem> GetLocationByGameId(int GameId)
         {
             List<LocationListItem> result = new List<LocationListItem>();
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
-                    ctx.Locations
-                    //.Where(e=>e.GameId==gameId) //FK 
-                    .Select(
-                        e => new LocationListItem
-                        {
-                            Country = e.Country,
-                            Id=e.Id,
-                            MetroArea=e.MetroArea,
-                            Name=e.Name
-
-                        }) ;
+                    ctx
+                        .Locations
+                        //.Where(e => e.GameId == gameId) //TODO: Cant do this part until the foreign keys are added
+                        .Select(
+                            e => new LocationListItem
+                            {
+                                Id = e.Id,
+                                Country = e.Country,
+                                MetroArea = e.MetroArea,
+                                Name = e.Name
+                            }
+                        );
                 return query.ToList();
-            }            
+            }
         }
-                         
     }
 }
 

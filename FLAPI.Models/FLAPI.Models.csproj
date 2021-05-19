@@ -72,6 +72,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VaultCreate.cs" />
     <Compile Include="VaultListItem.cs" />
+    <Compile Include="WeaponCreate.cs" />
+    <Compile Include="WeaponListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -115,7 +115,7 @@ namespace FLAPI.Services
                 }
             }
         }
-        public bool DeleteHistory(int characterId)
+        public bool DeleteCharacter(int characterId)
         {
             using (var ctx = new ApplicationDbContext())
             {
