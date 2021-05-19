@@ -1,4 +1,5 @@
-﻿using FLAPI.Services;
+﻿using FLAPI.Models;
+using FLAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,26 @@ namespace FLAPI.WebAPI.Controllers
             CharacterService characterService = CreateCharacterService();
             var characters = characterService.GetCharacterByGameId(gameId);
             return Ok(characters);
+        }
+        public IHttpActionResult Post(CharacterCreate character)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateCharacterService();
+
+            if (!service.CreateCharacter(character))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int characterId)
+        {
+            var service = CreateCharacterService();
+            if (!service.DeleteCharacter(characterId))
+                return InternalServerError();
+
+            return Ok();
         }
     }
 }
