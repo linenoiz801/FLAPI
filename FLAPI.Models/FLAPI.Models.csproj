@@ -59,6 +59,10 @@
   <ItemGroup>
     <Compile Include="CharacterCreate.cs" />
     <Compile Include="CharacterListItem.cs" />
+    <Compile Include="GameCreate.cs" />
+    <Compile Include="GameListItem.cs" />
+    <Compile Include="ArmorCreate.cs" />
+    <Compile Include="ArmorListItem.cs" />
     <Compile Include="HistoryListItem.cs" />
     <Compile Include="HistoryCreate.cs" />
     <Compile Include="LocationCreate.cs" />
@@ -66,6 +70,8 @@
     <Compile Include="PerkCreate.cs" />
     <Compile Include="PerkListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeaponCreate.cs" />
+    <Compile Include="WeaponListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
