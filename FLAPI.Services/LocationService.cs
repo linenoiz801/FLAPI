@@ -16,9 +16,9 @@ namespace FLAPI.Services
             var entity =
                 new Location()
                 {
-                    Country=model.Country,
-                    MetroArea=model.MetroArea,
-                    Name=model.Name
+                    Country = model.Country,
+                    MetroArea = model.MetroArea,
+                    Name = model.Name
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -54,14 +54,14 @@ namespace FLAPI.Services
                     ctx
                     .Locations
                     .Single(e => e.Id == locationId);
-                    return
-                    new LocationListItem
-                    {
-                        Id=entity.Id,
-                        Name=entity.Name,
-                        Country=entity.Country,
-                        MetroArea=entity.MetroArea
-                    };
+                return
+                new LocationListItem
+                {
+                    Id = entity.Id,
+                    Name = entity.Name,
+                    Country = entity.Country,
+                    MetroArea = entity.MetroArea
+                };
             }
         }
         public bool DeleteLocation(int locationId)
@@ -84,7 +84,7 @@ namespace FLAPI.Services
                 var entity =
                     ctx
                     .Locations
-                    .Single(e => e.Id==model.Id);
+                    .Single(e => e.Id == model.Id);
                 entity.MetroArea = model.MetroArea;
                 entity.Name = model.Name;
                 entity.Country = model.Country;
@@ -115,3 +115,5 @@ namespace FLAPI.Services
         }
     }
 }
+
+
