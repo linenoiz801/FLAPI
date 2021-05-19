@@ -80,6 +80,46 @@ namespace FLAPI.Services
                 return query.ToList();
             }
         }
+        public bool UpdateVault(VaultListItem model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Vaults
+                        .SingleOrDefault(e => e.Id == model.VaultId);
+
+                if (query != null)
+                {
+                    query.VaultName = model.VaultName;
+                    query.VaultNumber = model.VaultNumber;
+                    return ctx.SaveChanges() == 1;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        public bool DeleteVaults(int vaultId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Vaults
+                        .SingleOrDefault(e => e.Id == vaultId);
+
+                if (query != null)
+                {
+                    ctx.Vaults.Remove(query);
+                    return ctx.SaveChanges() == 1;
+                }
+                else 
+                    return false;
+            }
+        }
+
     }
 }
 
