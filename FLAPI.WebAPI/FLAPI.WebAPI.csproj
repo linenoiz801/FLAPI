@@ -239,6 +239,7 @@
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\PerkController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

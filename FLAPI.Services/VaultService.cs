@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FLAPI.Services
 {
-    public class VaultServices
+    public class VaultService
     {
         public bool CreateVault(VaultCreate model)
         {
