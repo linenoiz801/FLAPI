@@ -17,7 +17,8 @@ namespace FLAPI.Services
                 {
                     EventName = model.EventName,
                     EventDate = model.EventDate,
-                    Description = model.Description
+                    Description = model.Description,
+                    GameId = model.GameId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -26,7 +27,7 @@ namespace FLAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public List<HistoryListItem> GetHistoriesByGameId(int GameId)
+        public List<HistoryListItem> GetHistoriesByGameId(int gameId)
         {
             List<HistoryListItem> result = new List<HistoryListItem>();
             using (var ctx = new ApplicationDbContext())
@@ -34,14 +35,15 @@ namespace FLAPI.Services
                 var query =
                     ctx
                         .Histories
-                        //.Where(e => e.GameId == gameId) //TODO: Cant do this part until the foreign keys are added
+                        .Where(e => e.GameId == gameId) 
                         .Select(
                             e => new HistoryListItem
                             {
                                 Id = e.Id,
                                 EventName = e.EventName,
                                 EventDate = e.EventDate,
-                                Description = e.Description
+                                Description = e.Description,
+                                GameId = e.GameId
                             }
                         );
                 return query.ToList();
@@ -61,7 +63,8 @@ namespace FLAPI.Services
                                     Id = e.Id,
                                     EventName = e.EventName,
                                     EventDate = e.EventDate,
-                                    Description = e.Description
+                                    Description = e.Description,
+                                    GameId = e.GameId
                                 }
                         );
                 return query.ToArray();
@@ -81,6 +84,7 @@ namespace FLAPI.Services
                 result.EventName = query.EventName;
                 result.EventDate = query.EventDate;
                 result.Description = query.Description;
+                result.GameId = query.GameId;
 
                 return result;
             }
@@ -99,6 +103,8 @@ namespace FLAPI.Services
                     query.EventDate = model.EventDate;
                     query.EventName = model.EventName;
                     query.Description = model.Description;
+                    query.GameId = model.GameId;
+
                     return ctx.SaveChanges() == 1;
                 }
                 else
