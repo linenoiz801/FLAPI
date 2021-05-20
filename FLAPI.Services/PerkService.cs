@@ -16,7 +16,8 @@ namespace FLAPI.Services
                 new Perk()
                 {
                     Name = model.Name,
-                    Prereq = model.Prereq
+                    Prereq = model.Prereq,
+                    GameId = model.GameId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -25,7 +26,7 @@ namespace FLAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public List<PerkListItem> GetPerksByGameId(int GameId)
+        public List<PerkListItem> GetPerksByGameId(int gameId)
         {
             List<PerkListItem> result = new List<PerkListItem>();
             using (var ctx = new ApplicationDbContext())
@@ -33,13 +34,14 @@ namespace FLAPI.Services
                 var query =
                     ctx
                         .Perks
-                        //.Where(e => e.GameId == gameId) //TODO: Cant do this part until the foreign keys are added
+                        .Where(e => e.GameId == gameId) 
                         .Select(
                             e => new PerkListItem
                             {
                                 Id = e.Id,
                                 Name = e.Name,
-                                Prereq = e.Prereq
+                                Prereq = e.Prereq,
+                                GameId = e.GameId
                             }
                         );
                 return query.ToList();
@@ -58,7 +60,8 @@ namespace FLAPI.Services
                                 {
                                     Id = e.Id,
                                     Name = e.Name,
-                                    Prereq = e.Prereq
+                                    Prereq = e.Prereq,
+                                    GameId = e.GameId
                                 }
                         );
                 return query.ToArray();
@@ -77,6 +80,7 @@ namespace FLAPI.Services
                 result.Id = query.Id;
                 result.Name = query.Name;
                 result.Prereq = query.Prereq;
+                result.GameId = query.GameId;
 
                 return result;
             }
@@ -94,6 +98,7 @@ namespace FLAPI.Services
                 {
                     query.Name = model.Name;
                     query.Prereq = model.Prereq;
+                    query.GameId = model.GameId;
                     return ctx.SaveChanges() == 1;
                 }
                 else
