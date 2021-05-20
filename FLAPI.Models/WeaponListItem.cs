@@ -14,7 +14,10 @@ namespace FLAPI.Models
         public string AmmoType { get; set; }
         public string WeaponType { get; set; }
         public string BaseDamage { get; set; }
-        // public enum AmmoType TypeOfAmmo { get; set; }
-        // public enum WeaponType TypeOfWeapon { get; set; }
+        // *Stretch: public enum AmmoType TypeOfAmmo { get; set; }
+        // *Stretch: public enum WeaponType TypeOfWeapon { get; set; }
+
+        public int GameId { get; set; }
+        public int HistoryId { get; set; }
     }
 }
