@@ -14,5 +14,8 @@ namespace FLAPI.Models
         public string Affiliation { get; set; }
         public bool IsNPC { get; set; }
         public bool IsHostile { get; set; }
+        public int SpeciesId { get; set; }
+        public int GameId { get; set; }
+        public int HistoryId { get; set; }
     }
 }
