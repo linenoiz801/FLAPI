@@ -19,7 +19,9 @@ namespace FLAPI.Services
                     WeaponType = model.WeaponType,
                     AmmoType = model.AmmoType,
                     BaseDamage = model.BaseDamage,
-                    Description = model.Description
+                    Description = model.Description,
+                    GameId = model.GameId,
+                    HistoryId = model.HistoryId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -43,7 +45,9 @@ namespace FLAPI.Services
                                 WeaponType = e.WeaponType,
                                 AmmoType = e.AmmoType,
                                 BaseDamage = e.BaseDamage,
-                                Description = e.Description
+                                Description = e.Description,
+                                GameId = e.GameId,
+                                HistoryId = e.HistoryId
                             }
                             );
                 return query.ToArray();
@@ -64,6 +68,8 @@ namespace FLAPI.Services
                 result.AmmoType = query.AmmoType;
                 result.BaseDamage = query.BaseDamage;
                 result.Description = query.Description;
+                result.GameId = query.GameId;
+                result.HistoryId = query.HistoryId;
 
                 return result;
             }
@@ -85,7 +91,9 @@ namespace FLAPI.Services
                             WeaponType = e.WeaponType,
                             AmmoType = e.AmmoType,
                             BaseDamage = e.BaseDamage,
-                            Description = e.Description
+                            Description = e.Description,
+                            GameId = e.GameId,
+                            HistoryId = e.HistoryId
                         }
                     );
                 return query.ToList();
@@ -107,6 +115,8 @@ namespace FLAPI.Services
                     query.AmmoType = model.AmmoType;
                     query.BaseDamage = model.BaseDamage;
                     query.Description = model.Description;
+                    query.GameId = model.GameId;
+                    query.HistoryId = model.HistoryId;
                     return ctx.SaveChanges() == 1;
                 }
                 else
