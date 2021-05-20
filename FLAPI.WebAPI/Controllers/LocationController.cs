@@ -23,12 +23,12 @@ namespace FLAPI.WebAPI.Controllers
         }
         //gt by game id method
 
-        //public IHttpActionResult GetByGameId(int gameId)
-        //{
-        //    LocationService locationService = CreateLocationService();
-        //    var location = locationService.GetLocationByGameId(gameId);
-        //    return Ok(location);
-        //} 
+        public IHttpActionResult GetByGameId(int gameId)
+        {
+            LocationService locationService = CreateLocationService();
+            var location = locationService.GetLocationByGameId(gameId);
+            return Ok(location);
+        }
         public IHttpActionResult GetById(int locationId)
         {
             LocationService locationService = CreateLocationService();
