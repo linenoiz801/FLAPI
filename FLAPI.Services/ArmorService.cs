@@ -17,7 +17,9 @@ namespace FLAPI.Services
                 {
                     Name = model.Name,
                     Prereq = model.Prereq,
-                    Description = model.Description
+                    Description = model.Description,
+                    GameId = model.GameId,
+                    HistoryId = model.HistoryId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -26,7 +28,7 @@ namespace FLAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public List<ArmorListItem> GetArmorsByGameId(int GameId)
+        public List<ArmorListItem> GetArmorsByGameId(int gameId)
         {
             List<ArmorListItem> result = new List<ArmorListItem>();
             using (var ctx = new ApplicationDbContext())
@@ -34,14 +36,16 @@ namespace FLAPI.Services
                 var query =
                     ctx
                         .Armors
-                        //.Where(e => e.GameId == gameId) //TODO: Cant do this part until the foreign keys are added
+                        .Where(e => e.GameId == gameId) 
                         .Select(
                             e => new ArmorListItem
                             {
                                 Id = e.Id,
                                 Name = e.Name,
                                 Prereq = e.Prereq,
-                                Description = e.Description
+                                Description = e.Description,
+                                GameId = e.GameId,
+                                HistoryId = e.HistoryId
                             }
                         );
                 return query.ToList();
@@ -61,7 +65,9 @@ namespace FLAPI.Services
                                     Id = e.Id,
                                     Name = e.Name,
                                     Prereq = e.Prereq,
-                                    Description = e.Description
+                                    Description = e.Description,
+                                    GameId = e.GameId,
+                                    HistoryId = e.HistoryId
                                 }
                         );
                 return query.ToArray();
@@ -81,6 +87,8 @@ namespace FLAPI.Services
                 result.Name = query.Name;
                 result.Prereq = query.Prereq;
                 result.Description = query.Description;
+                result.GameId = query.GameId;
+                result.HistoryId = query.HistoryId;
 
                 return result;
             }
@@ -99,6 +107,9 @@ namespace FLAPI.Services
                     query.Name = model.Name;
                     query.Prereq = model.Prereq;
                     query.Description = model.Description;
+                    query.GameId = model.GameId;
+                    query.HistoryId = model.HistoryId;
+
                     return ctx.SaveChanges() == 1;
                 }
                 else
