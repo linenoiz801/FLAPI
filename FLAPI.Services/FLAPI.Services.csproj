@@ -64,6 +64,7 @@
     <Compile Include="LocationService.cs" />
     <Compile Include="HistoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpeciesService.cs" />
     <Compile Include="VaultService.cs" />
   </ItemGroup>
   <ItemGroup>
