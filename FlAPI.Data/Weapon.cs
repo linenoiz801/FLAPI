@@ -41,6 +41,7 @@ namespace FLAPI.Data
         public string BaseDamage { get; set; }
         // *Stretch: public enum AmmoType TypeOfAmmo { get; set; }
         // *Stretch: public enum WeaponType TypeOfWeapon { get; set; }
+
         [ForeignKey(nameof(Game))]
         public int GameId { get; set; }
         public virtual Game Game { get; set; }
