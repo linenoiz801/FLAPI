@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FLAPI.Data
+namespace FLAPI.Models
 {
-    public class Creature
+    class SpeciesCreate
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
         public string GameName { get; set; }
         [Required]
