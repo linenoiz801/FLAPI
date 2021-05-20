@@ -15,5 +15,10 @@ namespace FLAPI.Data
         public string VaultName { get; set; }
         [Required]
         public string VaultNumber { get; set; }
+        public ICollection<Characters_Vaults> CharacterVaults { get; set; }
+        public Vault()
+        {
+            CharacterVaults = new HashSet<Characters_Vaults>();
+        }
     }
 }

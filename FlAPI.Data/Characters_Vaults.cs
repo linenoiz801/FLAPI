@@ -16,8 +16,13 @@ namespace FLAPI.Data
         [ForeignKey(nameof(Character))]
         public int CharacterId { get; set; }
         public virtual Character Character { get; set; }
-        [ForeignKey(nameof(Vault))]
-        public int VaultId { get; set; }
-        public virtual Vault Vault { get; set; }
+
+        public ICollection<Vault> VaultCollection { get; set; }
+
+        public Characters_Vaults()
+        {
+            VaultCollection = new HashSet<Vault>();
+        }
+
     }
 }
