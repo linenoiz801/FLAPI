@@ -238,6 +238,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\PerkController.cs" />
+    <Compile Include="Controllers\SpeciesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VaultController.cs" />
     <Compile Include="Global.asax.cs">
