@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FLAPI.Models
+{
+    public class SpeciesGamesListItem
+    {
+        public int SpeciesId { get; set; }
+        public List<int> GameIds { get; set; }
+    }
+}
