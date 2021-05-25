@@ -39,6 +39,7 @@ namespace FLAPI.Data
         public DbSet<Armor> Armors { get; set; }
         public DbSet<Vault> Vaults { get; set; }
         public DbSet<Species> Species { get; set; }
+        public DbSet<SpeciesGame> SpeciesGames { get; set; }
 
     }
 }
