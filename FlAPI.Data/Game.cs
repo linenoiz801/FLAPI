@@ -8,11 +8,6 @@ namespace FLAPI.Data
 {
     public class Game
     {
-        //Id int[pk, increment]
-        //GameName string
-        //ReleaseDate datetime
-        //Description string
-
         public int Id { get; set; }
         public string GameName { get; set; }
         public DateTime ReleaseDate { get; set; }

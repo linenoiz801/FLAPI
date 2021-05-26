@@ -97,7 +97,6 @@
     <Compile Include="Perk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Species.cs" />
-    <Compile Include="SpeciesGame.cs" />
     <Compile Include="Vault.cs" />
     <Compile Include="Weapon.cs" />
   </ItemGroup>
