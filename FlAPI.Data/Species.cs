@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FLAPI.Data
 {
-    public class Creature
+    public class Species
     {
         [Key]
         public int Id { get; set; }
@@ -15,6 +15,6 @@ namespace FLAPI.Data
         public string GameName { get; set; }
         [Required]
         public DateTime ReleaseDate { get; set; }
-        public string Description { get; set; }
+        public string Description { get; set; }        
     }
 }

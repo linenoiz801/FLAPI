@@ -13,5 +13,6 @@ namespace FLAPI.Models
         public string GameName { get; set; }
         [Required]
         public DateTime ReleaseDate { get; set; }
+        public string Description { get; set; }
     }
 }

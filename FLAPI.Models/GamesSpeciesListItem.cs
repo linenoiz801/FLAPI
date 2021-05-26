@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace FLAPI.Models
 {
-    public class HistoryCreate
+    public class GamesSpeciesListItem
     {
-        public string EventName { get; set; }
-        public DateTime EventDate { get; set; }
-        public string Description { get; set; }
         public int GameId { get; set; }
+        public List<int> SpeciesIds { get; set; }
     }
 }

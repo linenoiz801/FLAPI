@@ -65,6 +65,7 @@
     <Compile Include="HistoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VaultService.cs" />
+    <Compile Include="WeaponService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

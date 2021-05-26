@@ -10,7 +10,7 @@ namespace FLAPI.Services
 {
     public class GamesServices
     {
-        public bool CreateGame(GameListItem model)
+        public bool CreateGame(GameCreate model)
         {
             var entity =
                 new Game()
