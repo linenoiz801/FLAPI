@@ -15,6 +15,11 @@ namespace FLAPI.Data
         public string GameName { get; set; }
         [Required]
         public DateTime ReleaseDate { get; set; }
-        public string Description { get; set; }        
+        public string Description { get; set; }       
+        public virtual ICollection<Game> ListOfGames { get; set; }
+        public Species()
+        {
+            ListOfGames = new HashSet<Game>();
+        }
     }
 }
