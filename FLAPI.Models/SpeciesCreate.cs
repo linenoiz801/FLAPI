@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FLAPI.Models
 {
-    class SpeciesCreate
+    public class SpeciesCreate
     {
         [Required]
         public string GameName { get; set; }
