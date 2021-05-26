@@ -122,5 +122,15 @@ namespace FLAPI.Services
                     return false;
             }
         }
+        public bool AddGameToSpecies(int speciesId, int gameId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundSpecies = ctx.Species.Single(s => s.Id == speciesId);
+                var foundGame = ctx.Games.Single(g => g.Id == gameId);
+                foundSpecies.ListOfGames.Add(foundGame);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
