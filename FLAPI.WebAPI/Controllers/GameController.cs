@@ -60,6 +60,14 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult AddSpeciesToGame(int gameId, int speciesId)
+        {
+            var service = CreateGameService();
 
+            if (!service.AddSpeciesToGame(speciesId, gameId))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }
