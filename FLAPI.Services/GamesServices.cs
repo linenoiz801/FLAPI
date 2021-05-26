@@ -94,5 +94,15 @@ namespace FLAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool AddSpeciesToGame(int speciesId, int gameId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundSpecies = ctx.Species.Single(s => s.Id == speciesId);
+                var foundGame = ctx.Games.Single(g => g.Id == gameId);
+                foundGame.ListOfSpecies.Add(foundSpecies);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
