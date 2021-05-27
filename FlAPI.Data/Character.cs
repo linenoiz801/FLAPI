@@ -35,10 +35,11 @@ namespace FLAPI.Data
         public int HistoryId { get; set; }
         public virtual History History { get; set; }
 
+        public virtual ICollection<Location> ListOfLocations { get; set; }
         public virtual ICollection<Vault> ListOfVaults { get; set; }
-
         public Character()
         {
+            ListOfLocations = new HashSet<Location>();
             ListOfVaults = new HashSet<Vault>();
         }
     }
