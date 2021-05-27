@@ -43,7 +43,6 @@ namespace FLAPI.Services
                 return query.ToArray();
             }
         }
-
         public VaultListItem GetVaultById(int vaultId)
         {
             VaultListItem result = new VaultListItem();
@@ -60,7 +59,7 @@ namespace FLAPI.Services
                 return result;
             }
         }
-        public List<VaultListItem> GetVaultsByGameId(int GameId)
+        public List<VaultListItem> GetVaultsByGameId(int gameId)
         {
             List<VaultListItem> result = new List<VaultListItem>();
             using (var ctx = new ApplicationDbContext())
@@ -68,7 +67,7 @@ namespace FLAPI.Services
                 var query =
                     ctx
                     .Vaults
-                    //.Where(e => e.GameId == gameId) //TODO: Can't do this part until the foreign keys are added
+                    .Where(e => e.Id == gameId) //TODO: Can't do this part until the foreign keys are added
                     .Select(
                         e => new VaultListItem
                         {
