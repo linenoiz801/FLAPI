@@ -146,6 +146,18 @@ namespace FLAPI.Services
                 return query.ToList();
             }
         }
+        public bool AddCharacterToLocation(int characterId, int locationId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundCharacter = ctx.Characters.Single(s=>s.CharacterId==characterId);
+                var foundLocation = ctx.Locations.Single(s => s.Id == locationId);
+                foundLocation.ListOfCharacters.Add(foundCharacter);
+                return ctx.SaveChanges() == 1;
+
+
+            }
+        }
     }
 }
 
