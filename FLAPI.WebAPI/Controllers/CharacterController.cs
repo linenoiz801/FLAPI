@@ -17,6 +17,11 @@ namespace FLAPI.WebAPI.Controllers
             var characterService = new CharacterService();
             return characterService;
         }
+        private VaultService CreateVaultService()
+        {
+            var vaultService = new VaultService();
+            return vaultService;
+        }
         public IHttpActionResult GetAllCharacters()
         {
             CharacterService characterService = CreateCharacterService();
@@ -28,6 +33,12 @@ namespace FLAPI.WebAPI.Controllers
             CharacterService characterService = CreateCharacterService();
             var character = characterService.GetCharacterById(characterId);
             return Ok(character);
+        }
+        public IHttpActionResult GetVaultsByCharacterId(int characterId)
+        {
+            VaultService vaultService = CreateVaultService();
+            var vaults = vaultService.GetAllVaultsByCharacterId(characterId);
+            return Ok(vaults);
         }
         public IHttpActionResult GetCharactersByGameId(int gameId)
         {
