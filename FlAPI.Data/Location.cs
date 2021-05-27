@@ -24,5 +24,11 @@ namespace FLAPI.Data
         [ForeignKey(nameof(History))]
         public int HistoryId { get; set; }
         public virtual History History { get; set; }
+        public virtual ICollection<Character> ListOfCharacters { get; set; }
+        public Location()
+        {
+            ListOfCharacters = new HashSet<Character>();
+        }
+
     }
 }
