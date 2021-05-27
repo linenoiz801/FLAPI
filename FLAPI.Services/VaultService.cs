@@ -24,6 +24,16 @@ namespace FLAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public void AddCharacterToVault(int characterId, int vaultId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundCharacter = ctx.Characters.Single(c => c.CharacterId == characterId);
+                var foundVault = ctx.Vaults.Single(v => v.Id == vaultId);
+                foundVault.ListOfCharacters.Add(foundCharacter);
+                var testing = ctx.SaveChanges();
+            }
+        }
         public IEnumerable<VaultListItem> GetVaults()
         {
             using (var ctx = new ApplicationDbContext())
