@@ -67,9 +67,7 @@ namespace FLAPI.Services
                     ctx.Characters.Single(c => c.CharacterId == characterId).ListOfVaults
                     .Select(e => new VaultListItem
                     {
-                        VaultId = e.Id,
-                        VaultName = e.VaultName,
-                        VaultNumber = e.VaultNumber
+                        VaultId = e.Id
                     }
                     );
                 return foundItems.ToArray();
