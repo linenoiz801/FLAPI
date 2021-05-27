@@ -18,7 +18,7 @@ namespace FLAPI.Data
         public DateTime EventDate { get; set; }
         public string Description { get; set; }
         [ForeignKey(nameof(Game))]
-        public int GameId { get; set; }
+        public int? GameId { get; set; }
         public virtual Game Game { get; set; }
     }
 }

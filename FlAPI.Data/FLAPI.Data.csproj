@@ -94,6 +94,15 @@
     <Compile Include="Location.cs" />
     <Compile Include="History.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202105272312334_InitialCreate.cs" />
+    <Compile Include="Migrations\202105272312334_InitialCreate.designer.cs">
+      <DependentUpon>202105272312334_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105272324128_M2MTest.cs" />
+    <Compile Include="Migrations\202105272324128_M2MTest.designer.cs">
+      <DependentUpon>202105272324128_M2MTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Perk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Species.cs" />
@@ -103,6 +112,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202105272312334_InitialCreate.resx">
+      <DependentUpon>202105272312334_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105272324128_M2MTest.resx">
+      <DependentUpon>202105272324128_M2MTest.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

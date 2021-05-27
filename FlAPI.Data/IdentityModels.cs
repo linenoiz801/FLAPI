@@ -39,5 +39,25 @@ namespace FLAPI.Data
         public DbSet<Armor> Armors { get; set; }
         public DbSet<Vault> Vaults { get; set; }
         public DbSet<Species> Species { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            /*
+             modelBuilder.Entity<Side>()
+                         .HasRequired(s => s.Stage)
+                         .WithMany()
+                         .WillCascadeOnDelete(false);
+             
+            modelBuilder.Entity<Game>()  
+                    .HasOptional(g => g.ListOfSpecies)
+                    .WithMany()
+                    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Species>()
+                    .HasOptional(g => g.ListOfGames)
+                    .WithMany()
+                    .WillCascadeOnDelete(false);
+            */
+        }
     }
 }
