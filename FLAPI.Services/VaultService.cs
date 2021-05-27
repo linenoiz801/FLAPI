@@ -24,6 +24,16 @@ namespace FLAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public void AddCharacterToVault(int characterId, int vaultId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundCharacter = ctx.Characters.Single(c => c.CharacterId == characterId);
+                var foundVault = ctx.Vaults.Single(v => v.Id == vaultId);
+                foundVault.ListOfCharacters.Add(foundCharacter);
+                var testing = ctx.SaveChanges();
+            }
+        }
         public IEnumerable<VaultListItem> GetVaults()
         {
             using (var ctx = new ApplicationDbContext())
@@ -57,6 +67,20 @@ namespace FLAPI.Services
                 result.VaultNumber = query.VaultNumber;
 
                 return result;
+            }
+        }
+        public IEnumerable<VaultListItem> GetAllVaultsByCharacterId(int characterId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundItems =
+                    ctx.Characters.Single(c => c.CharacterId == characterId).ListOfVaults
+                    .Select(e => new VaultListItem
+                    {
+                        VaultId = e.Id
+                    }
+                    );
+                return foundItems.ToArray();
             }
         }
         public List<VaultListItem> GetVaultsByGameId(int gameId)
