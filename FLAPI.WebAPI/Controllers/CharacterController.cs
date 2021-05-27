@@ -47,6 +47,16 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
+        [HttpPost]
+        public IHttpActionResult AddVaultToCharacter(int characterId, int vaultId)
+        {
+            var service = CreateCharacterService();
+
+            if (!service.AddVaultToCharacter(vaultId, characterId))
+                return InternalServerError();
+
+            return Ok();
+        }
         public IHttpActionResult Delete(int characterId)
         {
             var service = CreateCharacterService();
