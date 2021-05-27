@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="CharacterCreate.cs" />
     <Compile Include="CharacterListItem.cs" />
+    <Compile Include="CharacterLocation.cs" />
     <Compile Include="GameCreate.cs" />
     <Compile Include="GameListItem.cs" />
     <Compile Include="ArmorCreate.cs" />
