@@ -38,6 +38,12 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult GetCharactersByVaultId(int vaultId)
+        {
+            CharacterService characterService = CreateCharacterService();
+            var characters = characterService.GetAllCharactersByVaultId(vaultId);
+            return Ok(characters);
+        }
         public IHttpActionResult GetVaultsByGameId(int gameId)
         {
             VaultService vaultService = CreateVaultService();
