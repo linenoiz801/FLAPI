@@ -20,7 +20,7 @@ namespace FLAPI.Data
         public int GameId { get; set; }
         public virtual Game Game { get; set; }
         [ForeignKey(nameof(History))]
-        public int HistoryId { get; set; }
+        public int? HistoryId { get; set; }
         public virtual History History { get; set; }
     }
 }

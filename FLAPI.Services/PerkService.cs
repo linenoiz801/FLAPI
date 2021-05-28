@@ -17,7 +17,8 @@ namespace FLAPI.Services
                 {
                     Name = model.Name,
                     Prereq = model.Prereq,
-                    GameId = model.GameId
+                    GameId = model.GameId,
+                    Description = model.Description
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -41,7 +42,8 @@ namespace FLAPI.Services
                                 Id = e.Id,
                                 Name = e.Name,
                                 Prereq = e.Prereq,
-                                GameId = e.GameId
+                                GameId = e.GameId,
+                                Description = e.Description
                             }
                         );
                 return query.ToList();
@@ -61,7 +63,8 @@ namespace FLAPI.Services
                                     Id = e.Id,
                                     Name = e.Name,
                                     Prereq = e.Prereq,
-                                    GameId = e.GameId
+                                    GameId = e.GameId,
+                                    Description = e.Description
                                 }
                         );
                 return query.ToArray();
@@ -81,6 +84,7 @@ namespace FLAPI.Services
                 result.Name = query.Name;
                 result.Prereq = query.Prereq;
                 result.GameId = query.GameId;
+                result.Description = query.Description;
 
                 return result;
             }
@@ -99,6 +103,8 @@ namespace FLAPI.Services
                     query.Name = model.Name;
                     query.Prereq = model.Prereq;
                     query.GameId = model.GameId;
+                    query.Description = model.Description;
+
                     return ctx.SaveChanges() == 1;
                 }
                 else
