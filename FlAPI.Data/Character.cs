@@ -24,15 +24,15 @@ namespace FLAPI.Data
         public bool IsHostile { get; set; }
 
         [ForeignKey(nameof(Species))]
-        public int SpeciesId { get; set; }
+        public int? SpeciesId { get; set; }
         public virtual Species Species { get; set; }
 
         [ForeignKey(nameof(Game))]
-        public int GameId { get; set; }
+        public int? GameId { get; set; }
         public virtual Game Game { get; set; }
 
         [ForeignKey(nameof(History))]
-        public int HistoryId { get; set; }
+        public int? HistoryId { get; set; }
         public virtual History History { get; set; }
 
         public virtual ICollection<Location> ListOfLocations { get; set; }

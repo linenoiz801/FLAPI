@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace FLAPI.WebAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HistoryController : ApiController
     {
         private HistoryService CreateHistoryService()
