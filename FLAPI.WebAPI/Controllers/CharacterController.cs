@@ -16,6 +16,10 @@ namespace FLAPI.WebAPI.Controllers
         {
             var characterService = new CharacterService();
             return characterService;
+        } private LocationService CreateLocationService()
+        {
+            var locationService = new LocationService();
+            return locationService;
         }
         public IHttpActionResult GetAllCharacters()
         {
@@ -76,5 +80,13 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult GetLocationsByCharacterId(int characterId)
+        {
+            LocationService locationService = CreateLocationService();
+            var location = locationService.GetAllLocationsByCharacterId(characterId);
+            return Ok(location);
+        
+        }
     }
 }
+
