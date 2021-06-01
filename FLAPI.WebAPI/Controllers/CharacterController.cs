@@ -16,6 +16,10 @@ namespace FLAPI.WebAPI.Controllers
         {
             var characterService = new CharacterService();
             return characterService;
+        } private LocationService CreateLocationService()
+        {
+            var locationService = new LocationService();
+            return locationService;
         }
         private VaultService CreateVaultService()
         {
@@ -79,6 +83,17 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
+        [HttpPost]
+        public IHttpActionResult AddLocationToCharacter(int characterId, int locationId)
+        {
+            var service = CreateCharacterService();
+
+            if (!service.AddLocationToCharacter(locationId, characterId))
+                return InternalServerError();
+
+            return Ok();
+        }
+
         public IHttpActionResult Delete(int characterId)
         {
             var service = CreateCharacterService();
@@ -87,5 +102,13 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult GetLocationsByCharacterId(int characterId)
+        {
+            LocationService locationService = CreateLocationService();
+            var location = locationService.GetAllLocationsByCharacterId(characterId);
+            return Ok(location);
+        
+        }
     }
 }
+
