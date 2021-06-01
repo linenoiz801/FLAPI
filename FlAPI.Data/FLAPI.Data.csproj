@@ -109,6 +109,10 @@
     <Compile Include="Migrations\202105280053114_Adrianna1.designer.cs">
       <DependentUpon>202105280053114_Adrianna1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106010102018_Adrianna2.cs" />
+    <Compile Include="Migrations\202106010102018_Adrianna2.designer.cs">
+      <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Perk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -132,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105280053114_Adrianna1.resx">
       <DependentUpon>202105280053114_Adrianna1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106010102018_Adrianna2.resx">
+      <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
