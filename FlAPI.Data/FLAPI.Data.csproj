@@ -110,8 +110,9 @@
       <DependentUpon>202105280053114_Adrianna1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202106010102018_Adrianna2.cs" />
-    <Compile Include="Migrations\202106010102018_Adrianna2.designer.cs">
-      <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
+	  <Compile Include="Migrations\202106010102018_Adrianna2.designer.cs">
+		  <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
+	  </Compile>
     <Compile Include="Migrations\202105280023039_IntegrationTesting3.cs" />
     <Compile Include="Migrations\202105280023039_IntegrationTesting3.designer.cs">
       <DependentUpon>202105280023039_IntegrationTesting3.cs</DependentUpon>
@@ -140,8 +141,9 @@
     <EmbeddedResource Include="Migrations\202105280053114_Adrianna1.resx">
       <DependentUpon>202105280053114_Adrianna1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106010102018_Adrianna2.resx">
-      <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
+	  <EmbeddedResource Include="Migrations\202106010102018_Adrianna2.resx">
+		  <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
+	  </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105280023039_IntegrationTesting3.resx">
       <DependentUpon>202105280023039_IntegrationTesting3.cs</DependentUpon>
     </EmbeddedResource>
