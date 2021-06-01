@@ -50,6 +50,17 @@ namespace FLAPI.WebAPI.Controllers
             var characters = characterService.GetCharacterByGameId(gameId);
             return Ok(characters);
         }
+        public IHttpActionResult Put(CharacterListItem model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateCharacterService();
+            if (!service.UpdateCharacter(model))
+                return InternalServerError();
+
+            return Ok();
+        }
         public IHttpActionResult Post(CharacterCreate character)
         {
             if (!ModelState.IsValid)

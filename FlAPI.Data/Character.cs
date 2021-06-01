@@ -14,9 +14,7 @@ namespace FLAPI.Data
         public int CharacterId { get; set; }
         [Required]
         public string CharacterName { get; set; }
-        [Required]
         public int Age { get; set; }
-        [Required]
         public string Affiliation { get; set; }
         [Required]
         public bool IsNPC { get; set; }

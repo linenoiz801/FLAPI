@@ -43,11 +43,11 @@ namespace FLAPI.Data
         // *Stretch: public enum WeaponType TypeOfWeapon { get; set; }
 
         [ForeignKey(nameof(Game))]
-        public int GameId { get; set; }
+        public int? GameId { get; set; }
         public virtual Game Game { get; set; }
 
         [ForeignKey(nameof(History))]
-        public int HistoryId { get; set; }
+        public int? HistoryId { get; set; }
         public virtual History History { get; set; }
     }
 }
