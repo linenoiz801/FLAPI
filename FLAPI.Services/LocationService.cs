@@ -39,13 +39,14 @@ namespace FLAPI.Services
                         e =>
                         new LocationListItem
                         {
+                            Id = e.Id,
                             Name = e.Name,
                             Country = e.Country,
                             MetroArea = e.MetroArea,
                             GameId = e.GameId,
                             HistoryId = e.HistoryId
                         }
-                                );
+                     );
                 return query.ToArray();
             }
 

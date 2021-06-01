@@ -110,12 +110,16 @@
       <DependentUpon>202105280053114_Adrianna1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202106010102018_Adrianna2.cs" />
-	  <Compile Include="Migrations\202106010102018_Adrianna2.designer.cs">
-		  <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
-	  </Compile>
+    <Compile Include="Migrations\202106010102018_Adrianna2.designer.cs">
+      <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202105280023039_IntegrationTesting3.cs" />
     <Compile Include="Migrations\202105280023039_IntegrationTesting3.designer.cs">
       <DependentUpon>202105280023039_IntegrationTesting3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106012346394_IntegrationTesting4.cs" />
+    <Compile Include="Migrations\202106012346394_IntegrationTesting4.designer.cs">
+      <DependentUpon>202106012346394_IntegrationTesting4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Perk.cs" />
@@ -141,11 +145,14 @@
     <EmbeddedResource Include="Migrations\202105280053114_Adrianna1.resx">
       <DependentUpon>202105280053114_Adrianna1.cs</DependentUpon>
     </EmbeddedResource>
-	  <EmbeddedResource Include="Migrations\202106010102018_Adrianna2.resx">
-		  <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
-	  </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106010102018_Adrianna2.resx">
+      <DependentUpon>202106010102018_Adrianna2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105280023039_IntegrationTesting3.resx">
       <DependentUpon>202105280023039_IntegrationTesting3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106012346394_IntegrationTesting4.resx">
+      <DependentUpon>202106012346394_IntegrationTesting4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
