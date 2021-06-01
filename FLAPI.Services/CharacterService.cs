@@ -100,6 +100,19 @@ namespace FLAPI.Services
                     );
                 return foundItems.ToArray();
             }
+        }public IEnumerable<CharacterListItem> GetAllCharactersByLocationId(int locationId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundItems =
+                    ctx.Locations.Single(c => c.Id == locationId).ListOfCharacters
+                    .Select(e => new CharacterListItem
+                    {
+                        CharacterId = e.CharacterId
+                    }
+                    );
+                return foundItems.ToArray();
+            }
         }
         public List<CharacterListItem> GetCharacterByGameId(int gameId)
         {
