@@ -10,7 +10,7 @@ namespace FLAPI.Services
 {
     public class GamesServices
     {
-        public bool CreateGame(GameListItem model)
+        public bool CreateGame(GameCreate model)
         {
             var entity =
                 new Game()
@@ -91,6 +91,16 @@ namespace FLAPI.Services
                     .Single(e => e.Id == gameId);
 
                 ctx.Games.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool AddSpeciesToGame(int speciesId, int gameId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundSpecies = ctx.Species.Single(s => s.Id == speciesId);
+                var foundGame = ctx.Games.Single(g => g.Id == gameId);
+                foundGame.ListOfSpecies.Add(foundSpecies);
                 return ctx.SaveChanges() == 1;
             }
         }

@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace FLAPI.WebAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SpeciesController : ApiController
     {
         private SpeciesService CreateSpeciesService()
@@ -63,6 +63,16 @@ namespace FLAPI.WebAPI.Controllers
             var service = CreateSpeciesService();
 
             if (!service.DeleteSpecies(speciesId))
+                return InternalServerError();
+
+            return Ok();
+        }
+        [HttpPost]
+        public IHttpActionResult AddGameToSpecies(int gameId, int speciesId)
+        {
+            var service = CreateSpeciesService();
+
+            if (!service.AddGameToSpecies(speciesId, gameId))
                 return InternalServerError();
 
             return Ok();

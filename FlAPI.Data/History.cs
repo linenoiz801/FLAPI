@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,6 @@ namespace FLAPI.Data
 {
     public class History
     {
-        /*  
-        Id int [pk, increment]
-        EventName string
-        EventDate datetime
-        Description string*/
         [Key]
         public int Id { get; set; }
         [Required]
@@ -21,5 +17,8 @@ namespace FLAPI.Data
         [Required]
         public DateTime EventDate { get; set; }
         public string Description { get; set; }
+        [ForeignKey(nameof(Game))]
+        public int? GameId { get; set; }
+        public virtual Game Game { get; set; }
     }
 }

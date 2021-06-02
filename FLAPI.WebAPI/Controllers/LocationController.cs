@@ -14,6 +14,10 @@ namespace FLAPI.WebAPI.Controllers
         private LocationService CreateLocationService()
         {
             return new LocationService();
+        }  
+        private CharacterService CreateCharacterService()
+        {
+            return new CharacterService();
         }
         public IHttpActionResult GetAll()
         {
@@ -23,12 +27,12 @@ namespace FLAPI.WebAPI.Controllers
         }
         //gt by game id method
 
-        //public IHttpActionResult GetByGameId(int gameId)
-        //{
-        //    LocationService locationService = CreateLocationService();
-        //    var location = locationService.GetLocationByGameId(gameId);
-        //    return Ok(location);
-        //} 
+        public IHttpActionResult GetByGameId(int gameId)
+        {
+            LocationService locationService = CreateLocationService();
+            var location = locationService.GetLocationByGameId(gameId);
+            return Ok(location);
+        }
         public IHttpActionResult GetById(int locationId)
         {
             LocationService locationService = CreateLocationService();
@@ -58,7 +62,16 @@ namespace FLAPI.WebAPI.Controllers
                 return InternalServerError();
 
             return Ok();
-        }  
+        }
+        public IHttpActionResult AddCharacterToLocation(int characterId, int locationId)
+        {
+            var service = CreateLocationService();
+
+            if (!service.AddCharacterToLocation(locationId, characterId))
+                return InternalServerError();
+
+            return Ok();
+        }
         public IHttpActionResult Delete(int locationId)
         {
             var service = CreateLocationService();
@@ -68,8 +81,12 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
-
- 
-
+         public IHttpActionResult GetCharactersByLocationId(int locationId)
+        {
+            CharacterService characterService = CreateCharacterService();
+            var location = characterService.GetAllCharactersByLocationId(locationId);
+            return Ok(location);
+        
+        }
     }
 }

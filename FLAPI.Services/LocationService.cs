@@ -18,7 +18,9 @@ namespace FLAPI.Services
                 {
                     Country = model.Country,
                     MetroArea = model.MetroArea,
-                    Name = model.Name
+                    Name = model.Name,
+                    HistoryId=model.HistoryId,
+                    GameId=model.GameId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -37,11 +39,14 @@ namespace FLAPI.Services
                         e =>
                         new LocationListItem
                         {
+                            Id = e.Id,
                             Name = e.Name,
                             Country = e.Country,
-                            MetroArea = e.MetroArea
+                            MetroArea = e.MetroArea,
+                            GameId = e.GameId,
+                            HistoryId = e.HistoryId
                         }
-                                );
+                     );
                 return query.ToArray();
             }
 
@@ -60,7 +65,9 @@ namespace FLAPI.Services
                     Id = entity.Id,
                     Name = entity.Name,
                     Country = entity.Country,
-                    MetroArea = entity.MetroArea
+                    MetroArea = entity.MetroArea,
+                    GameId=entity.GameId,
+                    HistoryId=entity.HistoryId
                 };
             }
         }
@@ -88,31 +95,76 @@ namespace FLAPI.Services
                 entity.MetroArea = model.MetroArea;
                 entity.Name = model.Name;
                 entity.Country = model.Country;
+                entity.HistoryId = model.HistoryId;
+                entity.GameId = model.GameId;
                 return ctx.SaveChanges() == 1;
 
             }
         }
-        public List<LocationListItem> GetLocationsByGameId(int GAmeId)
+
+        public object GetAllLocationsByCharacterId(int characterId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<LocationListItem> GetLocationByGameId(int GameId)
         {
             List<LocationListItem> result = new List<LocationListItem>();
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
-                    ctx.Locations
-                    //.Where(e=>e.GameId==gameId) //FK 
-                    .Select(
-                        e => new LocationListItem
-                        {
-                            Country = e.Country,
-                            Id=e.Id,
-                            MetroArea=e.MetroArea,
-                            Name=e.Name
-
-                        }) ;
+                    ctx
+                        .Locations
+                        .Where(e => e.GameId == GameId) 
+                        .Select(
+                            e => new LocationListItem
+                            {
+                                Id = e.Id,
+                                Country = e.Country,
+                                MetroArea = e.MetroArea,
+                                Name = e.Name,
+                                GameId=e.GameId,
+                                HistoryId=e.HistoryId
+                            }
+                        );
                 return query.ToList();
-            }            
+            }
         }
-                         
+        public List<LocationListItem> GetLocationByHistoryId(int HistoryId)
+        {
+            List<LocationListItem> result = new List<LocationListItem>();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Locations
+                        .Where(e => e.HistoryId == HistoryId)
+                        .Select(
+                            e => new LocationListItem
+                            {
+                                Id = e.Id,
+                                Country = e.Country,
+                                MetroArea = e.MetroArea,
+                                Name = e.Name,
+                                GameId = e.GameId,
+                                HistoryId = e.HistoryId
+                            }
+                        );
+                return query.ToList();
+            }
+        }
+        public bool AddCharacterToLocation(int characterId, int locationId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundCharacter = ctx.Characters.Single(s=>s.CharacterId==characterId);
+                var foundLocation = ctx.Locations.Single(s => s.Id == locationId);
+                foundLocation.ListOfCharacters.Add(foundCharacter);
+                return ctx.SaveChanges() == 1;
+
+
+            }
+        }
     }
 }
 

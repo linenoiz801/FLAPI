@@ -19,11 +19,24 @@ namespace FLAPI.Services
                     Age = model.Age,
                     Affiliation = model.Affiliation,
                     IsNPC = model.IsNPC,
-                    IsHostile = model.IsHostile
+                    IsHostile = model.IsHostile,
+                    SpeciesId = model.SpeciesId,
+                    GameId = model.GameId,
+                    HistoryId = model.HistoryId
                 };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Characters.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool AddVaultToCharacter(int vaultId, int characterId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundVault = ctx.Vaults.Single(v => v.Id == vaultId);
+                var foundCharacter = ctx.Characters.Single(c => c.CharacterId == characterId);
+                foundCharacter.ListOfVaults.Add(foundVault);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -43,7 +56,10 @@ namespace FLAPI.Services
                                 Age = e.Age,
                                 Affiliation = e.Affiliation,
                                 IsNPC = e.IsNPC,
-                                IsHostile = e.IsHostile
+                                IsHostile = e.IsHostile,
+                                SpeciesId = e.SpeciesId,
+                                GameId = e.GameId,
+                                HistoryId = e.HistoryId
                             }
                             );
                 return query.ToArray();
@@ -64,11 +80,41 @@ namespace FLAPI.Services
                 result.Affiliation = query.Affiliation;
                 result.IsNPC = query.IsNPC;
                 result.IsHostile = query.IsHostile;
+                result.SpeciesId = query.SpeciesId;
+                result.GameId = query.GameId;
+                result.HistoryId = query.HistoryId;
 
                 return result;
             }
         }
-        public List<CharacterListItem> GetCharacterByGameId(int GameId)
+        public IEnumerable<CharacterListItem> GetAllCharactersByVaultId(int vaultId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundItems =
+                    ctx.Vaults.Single(c => c.Id == vaultId).ListOfCharacters
+                    .Select(e => new CharacterListItem
+                    {
+                        CharacterId = e.CharacterId
+                    }
+                    );
+                return foundItems.ToArray();
+            }
+        }public IEnumerable<CharacterListItem> GetAllCharactersByLocationId(int locationId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundItems =
+                    ctx.Locations.Single(c => c.Id == locationId).ListOfCharacters
+                    .Select(e => new CharacterListItem
+                    {
+                        CharacterId = e.CharacterId
+                    }
+                    );
+                return foundItems.ToArray();
+            }
+        }
+        public List<CharacterListItem> GetCharacterByGameId(int gameId)
         {
             List<CharacterListItem> result = new List<CharacterListItem>();
             using (var ctx = new ApplicationDbContext())
@@ -76,7 +122,7 @@ namespace FLAPI.Services
                 var query =
                     ctx
                         .Characters
-                        //.Where(e => e.GameId == gameId) //TODO: Cant do this part until the foreign keys are added
+                        .Where(e => e.GameId == gameId)
                         .Select(
                         e => new CharacterListItem
                         {
@@ -85,7 +131,10 @@ namespace FLAPI.Services
                             Age = e.Age,
                             Affiliation = e.Affiliation,
                             IsNPC = e.IsNPC,
-                            IsHostile = e.IsHostile
+                            IsHostile = e.IsHostile,
+                            SpeciesId = e.SpeciesId,
+                            GameId = e.GameId,
+                            HistoryId = e.HistoryId
                         }
                     );
                 return query.ToList();
@@ -107,6 +156,9 @@ namespace FLAPI.Services
                     query.Affiliation = model.Affiliation;
                     query.IsNPC = model.IsNPC;
                     query.IsHostile = model.IsHostile;
+                    query.SpeciesId = model.SpeciesId;
+                    query.GameId = model.GameId;
+                    query.HistoryId = model.HistoryId;
                     return ctx.SaveChanges() == 1;
                 }
                 else
@@ -115,7 +167,7 @@ namespace FLAPI.Services
                 }
             }
         }
-        public bool DeleteHistory(int characterId)
+        public bool DeleteCharacter(int characterId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -131,6 +183,16 @@ namespace FLAPI.Services
                 }
                 else
                     return false;
+            }
+        }
+        public bool AddLocationToCharacter(int locationId, int characterId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundLocation = ctx.Locations.Single(s => s.Id == locationId);
+                var foundCharacter = ctx.Characters.Single(s => s.CharacterId == characterId);
+                foundCharacter.ListOfLocations.Add(foundLocation);
+                return ctx.SaveChanges() == 1;
             }
         }
 

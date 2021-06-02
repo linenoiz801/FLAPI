@@ -15,7 +15,7 @@ namespace FLAPI.Models
         public string Country { get; set; }
 
         public string MetroArea { get; set; }
-        //public virtual PostListItem Post { get; set; }   "future FK"
-
+        public int? GameId { get; set; }
+        public int? HistoryId { get; set; }
     }
 }

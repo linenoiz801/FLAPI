@@ -9,12 +9,16 @@ using System.Web.Http;
 
 namespace FLAPI.WebAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class VaultController : ApiController
     {
         private VaultService CreateVaultService()
         {
             return new VaultService();
+        }
+        private CharacterService CreateCharacterService()
+        {
+            return new CharacterService();
         }
         public IHttpActionResult Get()
         {
@@ -33,6 +37,12 @@ namespace FLAPI.WebAPI.Controllers
                 return InternalServerError();
 
             return Ok();
+        }
+        public IHttpActionResult GetCharactersByVaultId(int vaultId)
+        {
+            CharacterService characterService = CreateCharacterService();
+            var characters = characterService.GetAllCharactersByVaultId(vaultId);
+            return Ok(characters);
         }
         public IHttpActionResult GetVaultsByGameId(int gameId)
         {
@@ -54,6 +64,16 @@ namespace FLAPI.WebAPI.Controllers
             var service = CreateVaultService();
 
             if (!service.UpdateVault(model))
+                return InternalServerError();
+
+            return Ok();
+        }
+        [HttpPost]
+        public IHttpActionResult AddCharacterToVault(int characterId, int vaultId)
+        {
+            var service = CreateVaultService();
+
+            if (!service.AddCharacterToVault(characterId, vaultId))
                 return InternalServerError();
 
             return Ok();

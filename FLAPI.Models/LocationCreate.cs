@@ -9,8 +9,6 @@ namespace FLAPI.Models
 {
     public class LocationCreate
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
         [MinLength(2, ErrorMessage = "Please Enter More Charaters.")]
         [MaxLength(6000, ErrorMessage = "You Entered Too Many Characters.")]
@@ -20,5 +18,7 @@ namespace FLAPI.Models
         public string Country { get; set; }
 
         public string MetroArea { get; set; }
+        public int? GameId { get; set; }
+        public int? HistoryId { get; set; }
     }
 }

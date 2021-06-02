@@ -19,6 +19,11 @@ namespace FLAPI.Data
         public string Strength { get; set; }
         [ForeignKey(nameof(History))]
         public int? HistoryId { get; set; }
-        public virtual History History { get; set; }
+        public virtual History History { get; set; }     
+        public virtual ICollection<Game> ListOfGames { get; set; }
+        public Species()
+        {
+            ListOfGames = new HashSet<Game>();
+        }
     }
 }

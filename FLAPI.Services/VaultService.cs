@@ -24,6 +24,16 @@ namespace FLAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool AddCharacterToVault(int characterId, int vaultId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundCharacter = ctx.Characters.Single(c => c.CharacterId == characterId);
+                var foundVault = ctx.Vaults.Single(v => v.Id == vaultId);
+                foundVault.ListOfCharacters.Add(foundCharacter);
+                return ctx.SaveChanges() == 1;
+            }
+        }
         public IEnumerable<VaultListItem> GetVaults()
         {
             using (var ctx = new ApplicationDbContext())
@@ -43,7 +53,6 @@ namespace FLAPI.Services
                 return query.ToArray();
             }
         }
-
         public VaultListItem GetVaultById(int vaultId)
         {
             VaultListItem result = new VaultListItem();
@@ -60,7 +69,21 @@ namespace FLAPI.Services
                 return result;
             }
         }
-        public List<VaultListItem> GetVaultsByGameId(int GameId)
+        public IEnumerable<VaultListItem> GetAllVaultsByCharacterId(int characterId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundItems =
+                    ctx.Characters.Single(c => c.CharacterId == characterId).ListOfVaults
+                    .Select(e => new VaultListItem
+                    {
+                        VaultId = e.Id
+                    }
+                    );
+                return foundItems.ToArray();
+            }
+        }
+        public List<VaultListItem> GetVaultsByGameId(int gameId)
         {
             List<VaultListItem> result = new List<VaultListItem>();
             using (var ctx = new ApplicationDbContext())
@@ -68,7 +91,7 @@ namespace FLAPI.Services
                 var query =
                     ctx
                     .Vaults
-                    //.Where(e => e.GameId == gameId) //TODO: Can't do this part until the foreign keys are added
+                    .Where(e => e.Id == gameId) //TODO: Can't do this part until the foreign keys are added
                     .Select(
                         e => new VaultListItem
                         {
