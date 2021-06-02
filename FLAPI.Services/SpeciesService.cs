@@ -15,8 +15,10 @@ namespace FLAPI.Services
             var entity =
                 new Species()
                 {
-                    GameName = model.GameName,
-                    ReleaseDate = model.ReleaseDate
+                    SpeciesName = model.SpeciesName,
+                    Strength = model.Strength,
+                    Weakness = model.Weakness,
+                    HistoryId = model.HistoryId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -36,9 +38,10 @@ namespace FLAPI.Services
                         new SpeciesListItem
                         {
                             Id = e.Id,
-                            Description = e.Description,
-                            GameName = e.GameName,
-                            ReleaseDate = e.ReleaseDate
+                            Weakness = e.Weakness,
+                            SpeciesName = e.SpeciesName,
+                            Strength = e.Strength,
+                            HistoryId = e.HistoryId
                         }
                         );
                 return query.ToArray();
@@ -54,33 +57,34 @@ namespace FLAPI.Services
                     .Species
                     .Single(b => b.Id == speciesId);
                 result.Id = query.Id;
-                result.GameName = query.GameName;
-                result.Description = query.Description;
-                result.ReleaseDate = query.ReleaseDate;
+                result.SpeciesName = query.SpeciesName;
+                result.Weakness = query.Weakness;
+                result.Strength = query.Strength;
+                result.HistoryId = query.HistoryId;
+                
 
                 return result;
             }
         }
-        public List<SpeciesListItem> GetSpeciesByGameId(int gameId)
+        /*public List<SpeciesListItem> GetSpeciesByGameId(int gameId)
         {
             List<SpeciesListItem> result = new List<SpeciesListItem>();
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx.Species
-                    //.Where(e => e.GameId == gameId) //TODO: Can't do this part until the foreign keys are added
                     .Select(
                         e => new SpeciesListItem
                         {
                             Id = e.Id,
-                            Description = e.Description,
+                             = e.,
                             GameName = e.GameName,
                             ReleaseDate = e.ReleaseDate
                         }
                         );
                 return query.ToList();
             }
-        }
+        }*/
         public bool UpdateSpecies(SpeciesListItem model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -92,10 +96,10 @@ namespace FLAPI.Services
 
                 if (query != null)
                 {
-                    query.GameName = model.GameName;
-                    query.Description = model.Description;
-                    query.ReleaseDate = model.ReleaseDate;
-                    query.Id = model.Id;
+                    query.SpeciesName = model.SpeciesName;
+                    query.Strength = model.Strength;
+                    query.Weakness = model.Weakness;
+                    query.HistoryId = model.HistoryId;
                     return ctx.SaveChanges() == 1;
                 }
                 else
