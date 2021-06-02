@@ -10,9 +10,10 @@ namespace FLAPI.Models
     public class SpeciesCreate
     {
         [Required]
-        public string GameName { get; set; }
-        [Required]
-        public DateTime ReleaseDate { get; set; }
-        public string Description { get; set; }
+        public string SpeciesName { get; set; }
+        public string Weakness { get; set; }
+        public string Strength { get; set; }
+        public int? HistoryId { get; set; }
+
     }
 }
