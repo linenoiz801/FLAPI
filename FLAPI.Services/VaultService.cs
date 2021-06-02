@@ -16,7 +16,8 @@ namespace FLAPI.Services
                 new Vault()
                 {
                     VaultName = model.VaultName,
-                    VaultNumber = model.VaultNumber
+                    VaultNumber = model.VaultNumber,
+                    LocationId = model.LocationId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -47,7 +48,8 @@ namespace FLAPI.Services
                         {
                             VaultId=e.Id,
                             VaultName=e.VaultName,
-                            VaultNumber=e.VaultNumber
+                            VaultNumber=e.VaultNumber,
+                            LocationId=e.LocationId
                         }
                         );
                 return query.ToArray();
@@ -65,7 +67,7 @@ namespace FLAPI.Services
                 result.VaultId = query.Id;
                 result.VaultName = query.VaultName;
                 result.VaultNumber = query.VaultNumber;
-
+                result.LocationId = query.LocationId;
                 return result;
             }
         }
@@ -97,7 +99,8 @@ namespace FLAPI.Services
                         {
                             VaultId = e.Id,
                             VaultName = e.VaultName,
-                            VaultNumber = e.VaultNumber
+                            VaultNumber = e.VaultNumber,
+                            LocationId = e.LocationId
                         }
                         );
                 return query.ToList();
@@ -116,6 +119,7 @@ namespace FLAPI.Services
                 {
                     query.VaultName = model.VaultName;
                     query.VaultNumber = model.VaultNumber;
+                    query.LocationId = model.LocationId;
                     return ctx.SaveChanges() == 1;
                 }
                 else
