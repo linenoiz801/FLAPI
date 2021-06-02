@@ -11,5 +11,6 @@ namespace FLAPI.Models
         public int VaultId { get; set; }
         public string VaultName { get; set; }
         public string VaultNumber { get; set; }
+        public int? LocationId { get; set; }
     }
 }
