@@ -34,12 +34,12 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
-        public IHttpActionResult GetSpeciesByGameId(int gameId)
+        /*public IHttpActionResult GetSpeciesByGameId(int gameId)
         {
             SpeciesService speciesService = CreateSpeciesService();
             var species = speciesService.GetSpeciesByGameId(gameId);
             return Ok(species);
-        }
+        }*/
         public IHttpActionResult GetSpeciesById(int speciesId)
         {
             SpeciesService speciesService = CreateSpeciesService();

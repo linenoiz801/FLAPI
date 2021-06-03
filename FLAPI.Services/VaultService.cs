@@ -16,7 +16,9 @@ namespace FLAPI.Services
                 new Vault()
                 {
                     VaultName = model.VaultName,
-                    VaultNumber = model.VaultNumber
+                    VaultNumber = model.VaultNumber,
+                    LocationId = model.LocationId,
+                    GameId = model.GameId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -47,7 +49,9 @@ namespace FLAPI.Services
                         {
                             VaultId=e.Id,
                             VaultName=e.VaultName,
-                            VaultNumber=e.VaultNumber
+                            VaultNumber=e.VaultNumber,
+                            LocationId=e.LocationId,
+                            GameId = e.GameId
                         }
                         );
                 return query.ToArray();
@@ -65,7 +69,8 @@ namespace FLAPI.Services
                 result.VaultId = query.Id;
                 result.VaultName = query.VaultName;
                 result.VaultNumber = query.VaultNumber;
-
+                result.LocationId = query.LocationId;
+                result.GameId = query.GameId;
                 return result;
             }
         }
@@ -91,13 +96,15 @@ namespace FLAPI.Services
                 var query =
                     ctx
                     .Vaults
-                    .Where(e => e.Id == gameId) //TODO: Can't do this part until the foreign keys are added
+                    .Where(e => e.GameId == gameId)
                     .Select(
                         e => new VaultListItem
                         {
                             VaultId = e.Id,
                             VaultName = e.VaultName,
-                            VaultNumber = e.VaultNumber
+                            VaultNumber = e.VaultNumber,
+                            LocationId = e.LocationId,
+                            GameId = e.GameId
                         }
                         );
                 return query.ToList();
@@ -116,6 +123,8 @@ namespace FLAPI.Services
                 {
                     query.VaultName = model.VaultName;
                     query.VaultNumber = model.VaultNumber;
+                    query.LocationId = model.LocationId;
+                    query.GameId = model.GameId;
                     return ctx.SaveChanges() == 1;
                 }
                 else
