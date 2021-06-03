@@ -14,5 +14,6 @@ namespace FLAPI.Models
         [Required]
         public string VaultNumber { get; set; }
         public int? LocationId { get; set; }
+        public int? GameId { get; set; }
     }
 }

@@ -19,6 +19,9 @@ namespace FLAPI.Data
         [ForeignKey(nameof(Location))]
         public int? LocationId { get; set; }
         public virtual Location Location { get; set; }
+        [ForeignKey(nameof(Game))]
+        public int? GameId { get; set; }
+        public virtual Game Game { get; set; }
 
         public virtual ICollection<Character> ListOfCharacters { get; set; }
 
