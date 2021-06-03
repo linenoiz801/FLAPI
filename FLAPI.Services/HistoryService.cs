@@ -10,6 +10,8 @@ namespace FLAPI.Services
 {
     public class HistoryService
     {
+        public object HttpContext { get; private set; }
+
         public bool CreateHistory(HistoryCreate model)
         {
             var entity =

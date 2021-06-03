@@ -1,10 +1,6 @@
 ﻿using FLAPI.Models;
 using FLAPI.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace FLAPI.WebAPI.Controllers
@@ -12,6 +8,7 @@ namespace FLAPI.WebAPI.Controllers
     //[Authorize]
     public class HistoryController : ApiController
     {
+        
         private HistoryService CreateHistoryService()
         {
             return new HistoryService();
@@ -20,20 +17,28 @@ namespace FLAPI.WebAPI.Controllers
         {
             HistoryService historyService = CreateHistoryService();
             var histories = historyService.GetHistories();
+            foreach (HistoryListItem h in histories)
+            {
+                h.GameURL = "https://"+ HttpContext.Current.Request.Url.Authority + "/api/Game?GameId="+ h.GameId;
+            }
             return Ok(histories);
         }
         public IHttpActionResult GetByGameId(int gameId)
         {
             HistoryService historyService = CreateHistoryService();
             var histories = historyService.GetHistoriesByGameId(gameId);
+            foreach (HistoryListItem h in histories)
+            {
+                h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+            }
             return Ok(histories);
         }
         public IHttpActionResult GetById(int historyId)
         {
             HistoryService historyService = CreateHistoryService();
             var history = historyService.GetHistoryById(historyId);
+            history.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + history.GameId;
             return Ok(history);
-
         }
         public IHttpActionResult Post(HistoryCreate history)
         {
