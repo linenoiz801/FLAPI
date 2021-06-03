@@ -121,6 +121,10 @@
     <Compile Include="Migrations\202106012346394_IntegrationTesting4.designer.cs">
       <DependentUpon>202106012346394_IntegrationTesting4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106032205489_IntegrationTesting5.cs" />
+    <Compile Include="Migrations\202106032205489_IntegrationTesting5.designer.cs">
+      <DependentUpon>202106032205489_IntegrationTesting5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Perk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106012346394_IntegrationTesting4.resx">
       <DependentUpon>202106012346394_IntegrationTesting4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106032205489_IntegrationTesting5.resx">
+      <DependentUpon>202106032205489_IntegrationTesting5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
