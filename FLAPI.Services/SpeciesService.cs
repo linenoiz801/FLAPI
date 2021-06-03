@@ -73,13 +73,15 @@ namespace FLAPI.Services
             {
                 var query =
                     ctx.Species
+                    //.Where(e => e.GameId == gameId) 
                     .Select(
                         e => new SpeciesListItem
                         {
                             Id = e.Id,
-                             = e.,
-                            GameName = e.GameName,
-                            ReleaseDate = e.ReleaseDate
+                            HistoryId = e.HistoryId,
+                            SpeciesName = e.SpeciesName,
+                            Strength = e.Strength,
+                            Weakness = e.Weakness
                         }
                         );
                 return query.ToList();
