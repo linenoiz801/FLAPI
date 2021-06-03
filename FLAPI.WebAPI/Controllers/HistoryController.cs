@@ -29,7 +29,7 @@ namespace FLAPI.WebAPI.Controllers
             var histories = historyService.GetHistoriesByGameId(gameId);
             foreach (HistoryListItem h in histories)
             {
-                h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+                h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;                
             }
             return Ok(histories);
         }
