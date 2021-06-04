@@ -26,7 +26,9 @@ namespace FLAPI.WebAPI.Controllers
             var locations = locationService.GetLocations();
             foreach (LocationListItem h in locations)
             {
+                if (h.GameId!=null)
                 h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+                if(h.HistoryId!=null)
                 h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
             }
             return Ok(locations);
@@ -39,8 +41,10 @@ namespace FLAPI.WebAPI.Controllers
             var location = locationService.GetLocationByGameId(gameId);
             foreach (LocationListItem h in location)
             {
-                h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
-                h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+                if (h.GameId != null)
+                    h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+                if (h.HistoryId != null)
+                    h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
             }
             return Ok(location);
         }
@@ -49,9 +53,10 @@ namespace FLAPI.WebAPI.Controllers
           
             LocationService locationService = CreateLocationService();
             var location = locationService.GetLocationById(locationId);
-
+            if(location.GameId!=null)
             location.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + location.GameId;
-            location.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + location.HistoryId;
+            if (location.HistoryId != null)
+                location.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + location.HistoryId;
             return Ok(location);
         }
         public IHttpActionResult Post(LocationCreate location)
