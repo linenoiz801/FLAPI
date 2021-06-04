@@ -31,7 +31,7 @@ namespace FLAPI.WebAPI.Controllers
             foreach (HistoryListItem h in histories)
             {
                 if (h.GameId != null)
-                    h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;                
+                    h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
             }
             return Ok(histories);
         }
