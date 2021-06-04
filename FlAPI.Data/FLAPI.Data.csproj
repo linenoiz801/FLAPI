@@ -129,6 +129,10 @@
     <Compile Include="Migrations\202106032257246_Vaults.GameId.designer.cs">
       <DependentUpon>202106032257246_Vaults.GameId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106040104483_NullableGameId.cs" />
+    <Compile Include="Migrations\202106040104483_NullableGameId.designer.cs">
+      <DependentUpon>202106040104483_NullableGameId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Perk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106032257246_Vaults.GameId.resx">
       <DependentUpon>202106032257246_Vaults.GameId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106040104483_NullableGameId.resx">
+      <DependentUpon>202106040104483_NullableGameId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

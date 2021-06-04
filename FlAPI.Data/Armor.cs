@@ -17,7 +17,7 @@ namespace FLAPI.Data
         public string Prereq { get; set; }
         public string Description { get; set; }
         [ForeignKey(nameof(Game))]
-        public int GameId { get; set; }
+        public int? GameId { get; set; }
         public virtual Game Game { get; set; }
         [ForeignKey(nameof(History))]
         public int? HistoryId { get; set; }
