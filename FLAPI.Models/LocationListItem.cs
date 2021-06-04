@@ -15,6 +15,8 @@ namespace FLAPI.Models
         public string Country { get; set; }
 
         public string MetroArea { get; set; }
+        public string HistoryURL { get; set; }
+        public string GameURL { get; set; }
         public int? GameId { get; set; }
         public int? HistoryId { get; set; }
     }

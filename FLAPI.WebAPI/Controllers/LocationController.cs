@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using FLAPI.Models;
 using FLAPI.Services;
@@ -22,8 +23,13 @@ namespace FLAPI.WebAPI.Controllers
         public IHttpActionResult GetAll()
         {
             LocationService locationService = CreateLocationService();
-            var histories = locationService.GetLocations();
-            return Ok(histories);
+            var locations = locationService.GetLocations();
+            foreach (LocationListItem h in locations)
+            {
+                h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+                h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+            }
+            return Ok(locations);
         }
         //gt by game id method
 
@@ -31,12 +37,21 @@ namespace FLAPI.WebAPI.Controllers
         {
             LocationService locationService = CreateLocationService();
             var location = locationService.GetLocationByGameId(gameId);
+            foreach (LocationListItem h in location)
+            {
+                h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+                h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+            }
             return Ok(location);
         }
         public IHttpActionResult GetById(int locationId)
         {
+          
             LocationService locationService = CreateLocationService();
             var location = locationService.GetLocationById(locationId);
+
+            location.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + location.GameId;
+            location.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + location.HistoryId;
             return Ok(location);
         }
         public IHttpActionResult Post(LocationCreate location)
