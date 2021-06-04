@@ -51,7 +51,7 @@ namespace FLAPI.WebAPI.Controllers
             SpeciesService speciesService = CreateSpeciesService();
             var species = speciesService.GetSpeciesById(speciesId);
                 if (species.HistoryId != null)
-                    species.HistoryUrl = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+                    species.HistoryUrl = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" +species.HistoryId;
             return Ok(species);
         }
         public IHttpActionResult Put(SpeciesListItem model)
