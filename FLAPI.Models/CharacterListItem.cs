@@ -17,5 +17,6 @@ namespace FLAPI.Models
         public int? SpeciesId { get; set; }
         public int? GameId { get; set; }
         public int? HistoryId { get; set; }
+        public int? VaultId { get; set; }
     }
 }
