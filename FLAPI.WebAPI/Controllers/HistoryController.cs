@@ -19,7 +19,8 @@ namespace FLAPI.WebAPI.Controllers
             var histories = historyService.GetHistories();
             foreach (HistoryListItem h in histories)
             {
-                h.GameURL = "https://"+ HttpContext.Current.Request.Url.Authority + "/api/Game?GameId="+ h.GameId;
+                if (h.GameId != null)
+                    h.GameURL = "https://"+ HttpContext.Current.Request.Url.Authority + "/api/Game?GameId="+ h.GameId;
             }
             return Ok(histories);
         }
@@ -29,7 +30,8 @@ namespace FLAPI.WebAPI.Controllers
             var histories = historyService.GetHistoriesByGameId(gameId);
             foreach (HistoryListItem h in histories)
             {
-                h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+                if (h.GameId != null)
+                    h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;                
             }
             return Ok(histories);
         }
@@ -37,7 +39,8 @@ namespace FLAPI.WebAPI.Controllers
         {
             HistoryService historyService = CreateHistoryService();
             var history = historyService.GetHistoryById(historyId);
-            history.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + history.GameId;
+            if (history.GameId != null)
+                history.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + history.GameId;
             return Ok(history);
         }
         public IHttpActionResult Post(HistoryCreate history)

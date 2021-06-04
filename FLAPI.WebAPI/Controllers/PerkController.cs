@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace FLAPI.WebAPI.Controllers
@@ -18,19 +19,29 @@ namespace FLAPI.WebAPI.Controllers
         public IHttpActionResult GetAll()
         {
             PerkService perkService = CreatePerkService();
-            var histories = perkService.GetPerks();
-            return Ok(histories);
+            var perks = perkService.GetPerks();
+            foreach (PerkListItem h in perks)
+            {
+                h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+            }
+            return Ok(perks);
         }
         public IHttpActionResult GetByGameId(int gameId)
         {
             PerkService perkService = CreatePerkService();
             var perks = perkService.GetPerksByGameId(gameId);
+            foreach (PerkListItem h in perks)
+            {
+                h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+            }
             return Ok(perks);
         }
         public IHttpActionResult GetById(int perkId)
         {
             PerkService perkService = CreatePerkService();
             var perk = perkService.GetPerkById(perkId);
+            perk.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + perk.GameId;
+            
             return Ok(perk);
 
         }
