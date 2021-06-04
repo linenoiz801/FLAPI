@@ -13,6 +13,6 @@ namespace FLAPI.Models
         public string Prereq { get; set; }
         public string Description { get; set; }
         public int GameId { get; set; }
-
+        public string GameURL { get; set; }
     }
 }
