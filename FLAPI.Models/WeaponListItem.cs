@@ -18,6 +18,8 @@ namespace FLAPI.Models
         // *Stretch: public enum WeaponType TypeOfWeapon { get; set; }
 
         public int? GameId { get; set; }
+        public string GameURL { get; set; }
         public int? HistoryId { get; set; }
+        public string HistoryURL { get; set; }
     }
 }

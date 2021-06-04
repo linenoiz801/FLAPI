@@ -15,7 +15,11 @@ namespace FLAPI.Models
         public bool IsNPC { get; set; }
         public bool IsHostile { get; set; }
         public int? SpeciesId { get; set; }
+        public string SpeciesURL { get; set; }
         public int? GameId { get; set; }
+        public string GameURL { get; set; }
         public int? HistoryId { get; set; }
+        public string HistoryURL { get; set; }
+        public int? VaultId { get; set; }
     }
 }

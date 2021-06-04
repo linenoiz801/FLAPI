@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace FLAPI.WebAPI.Controllers
@@ -20,18 +21,39 @@ namespace FLAPI.WebAPI.Controllers
         {
             WeaponService weaponService = CreateWeaponService();
             var weapons = weaponService.GetWeapons();
+            foreach (WeaponListItem h in weapons)
+            {
+                if (h.HistoryURL != null)
+                    h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+
+                if (h.GameURL != null)
+                    h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+            }
             return Ok(weapons);
         }
         public IHttpActionResult GetWeaponsByGameId(int gameId)
         {
             WeaponService weaponService = CreateWeaponService();
             var weapons = weaponService.GetWeaponByGameId(gameId);
+            foreach (WeaponListItem h in weapons)
+            {
+                if (h.HistoryURL != null)
+                    h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+
+                if (h.GameURL != null)
+                    h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+            }
             return Ok(weapons);
         }
         public IHttpActionResult GetWeaponById(int weaponId)
         {
             WeaponService weaponService = CreateWeaponService();
             var weapon = weaponService.GetWeaponById(weaponId);
+            if (weapon.HistoryURL != null)
+                weapon.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + weapon.HistoryId;
+
+            if (weapon.GameURL != null)
+                weapon.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + weapon.GameId;
             return Ok(weapon);
         }
         public IHttpActionResult Post(WeaponCreate weapon)

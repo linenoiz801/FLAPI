@@ -13,5 +13,6 @@ namespace FLAPI.Models
         public string Weakness { get; set; }
         public string Strength { get; set; }
         public int? HistoryId { get; set; }
+        public string HistoryUrl { get; set; }
     }
 }
