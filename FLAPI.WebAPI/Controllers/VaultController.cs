@@ -56,12 +56,23 @@ namespace FLAPI.WebAPI.Controllers
         {
             VaultService vaultService = CreateVaultService();
             var vault = vaultService.GetVaultsByGameId(gameId);
+            foreach (VaultListItem h in vault)
+            {
+                if (h.GameId != null)
+                    h.GameUrl = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+                if (h.LocationId != null)
+                    h.LocationUrl = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Location?LocationId=" + h.LocationId;
+            }
             return Ok(vault);
         }
         public IHttpActionResult GetVaultById(int vaultId)
         {
             VaultService vaultService = CreateVaultService();
             var vault = vaultService.GetVaultById(vaultId);
+                if (vault.GameId != null)
+                    vault.GameUrl = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + vault.GameId;
+                if (vault.LocationId != null)
+                    vault.LocationUrl = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Location?LocationId=" + vault.LocationId;
             return Ok(vault);
         }
         public IHttpActionResult Put(VaultListItem model)
