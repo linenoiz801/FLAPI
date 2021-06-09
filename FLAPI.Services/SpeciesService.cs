@@ -66,27 +66,29 @@ namespace FLAPI.Services
                 return result;
             }
         }
-        /*public List<SpeciesListItem> GetSpeciesByGameId(int gameId)
+        public List<SpeciesListItem> GetSpeciesByGameId(int gameId)
         {
             List<SpeciesListItem> result = new List<SpeciesListItem>();
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
-                    ctx.Species
-                    //.Where(e => e.GameId == gameId) 
-                    .Select(
-                        e => new SpeciesListItem
-                        {
-                            Id = e.Id,
-                            HistoryId = e.HistoryId,
-                            SpeciesName = e.SpeciesName,
-                            Strength = e.Strength,
-                            Weakness = e.Weakness
-                        }
-                        );
-                return query.ToList();
+                    ctx.Games
+                    .Single(e => e.Id == gameId);
+
+                foreach (Species s in query.ListOfSpecies)
+                {                    
+                    SpeciesListItem e = new SpeciesListItem();
+                    e.Id = s.Id;
+                    e.SpeciesName = s.SpeciesName;
+                    e.Strength = s.Strength;
+                    e.Weakness = s.Weakness;
+                    e.HistoryId = s.HistoryId;
+
+                    result.Add(e);
+                }
+                return result;
             }
-        }*/
+        }
         public bool UpdateSpecies(SpeciesListItem model)
         {
             using (var ctx = new ApplicationDbContext())
