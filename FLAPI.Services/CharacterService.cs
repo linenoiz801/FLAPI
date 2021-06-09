@@ -87,6 +87,33 @@ namespace FLAPI.Services
                 return result;
             }
         }
+        public List<CharacterListItem> GetCharactersByLocationId(int gameId)
+        {
+            List<CharacterListItem> result = new List<CharacterListItem>();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx.Locations
+                    .Single(e => e.Id == gameId);
+
+                foreach (Character c in query.ListOfCharacters)
+                {
+                    CharacterListItem e = new CharacterListItem();
+                    e.Affiliation = c.Affiliation;
+                    e.Age = c.Age;
+                    e.CharacterId = c.CharacterId;
+                    e.CharacterName = c.CharacterName;
+                    e.GameId = c.GameId;
+                    e.HistoryId = c.HistoryId;
+                    e.IsHostile = c.IsHostile;
+                    e.IsNPC = c.IsNPC;
+                    e.SpeciesId = c.SpeciesId;
+
+                    result.Add(e);
+                }
+                return result;
+            }
+        }
         public IEnumerable<CharacterListItem> GetAllCharactersByVaultId(int vaultId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -100,7 +127,8 @@ namespace FLAPI.Services
                     );
                 return foundItems.ToArray();
             }
-        }public IEnumerable<CharacterListItem> GetAllCharactersByLocationId(int locationId)
+        }
+        public IEnumerable<CharacterListItem> GetAllCharactersByLocationId(int locationId)
         {
             using (var ctx = new ApplicationDbContext())
             {

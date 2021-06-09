@@ -71,6 +71,29 @@ namespace FLAPI.Services
                 };
             }
         }
+        public List<LocationListItem>GetLocationsByCharacterId(int gameId)
+        {
+            List<LocationListItem> result = new List<LocationListItem>();
+            using (var  ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx.Characters
+                    .Single(e => e.CharacterId == gameId);
+                foreach (Location l in query.ListOfLocations)
+                {
+                    LocationListItem e = new LocationListItem();
+                    e.Country = l.Country;
+                    e.GameId = l.GameId;
+                    e.HistoryId = l.HistoryId;
+                    e.Id = l.Id;
+                    e.MetroArea = l.MetroArea;
+                    e.Name = l.Name;
+
+                    result.Add(e);
+                }
+                return result;
+            }
+        }
         public bool DeleteLocation(int locationId)
         {
             using (var ctx = new ApplicationDbContext())

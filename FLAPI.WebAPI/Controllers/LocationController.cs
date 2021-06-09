@@ -83,11 +83,11 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
-        public IHttpActionResult AddCharacterToLocation(int characterId, int locationId)
+        public IHttpActionResult AddCharacterToLocation(int characterId, int characterLocationId)
         {
             var service = CreateLocationService();
 
-            if (!service.AddCharacterToLocation(locationId, characterId))
+            if (!service.AddCharacterToLocation(characterId, characterLocationId))
                 return InternalServerError();
 
             return Ok();
