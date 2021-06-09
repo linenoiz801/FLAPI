@@ -133,6 +133,9 @@
     <Compile Include="Migrations\202106040104483_NullableGameId.designer.cs">
       <DependentUpon>202106040104483_NullableGameId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106090047463_FinalIntegration1.cs" />
+    <Compile Include="Migrations\202106090047463_FinalIntegration1.designer.cs">
+      <DependentUpon>202106090047463_FinalIntegration1.cs</DependentUpon>
     <Compile Include="Migrations\202106090012154_AdriValtCharacter.cs" />
     <Compile Include="Migrations\202106090012154_AdriValtCharacter.designer.cs">
       <DependentUpon>202106090012154_AdriValtCharacter.cs</DependentUpon>
@@ -179,6 +182,8 @@
     <EmbeddedResource Include="Migrations\202106040104483_NullableGameId.resx">
       <DependentUpon>202106040104483_NullableGameId.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106090047463_FinalIntegration1.resx">
+      <DependentUpon>202106090047463_FinalIntegration1.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\202106090012154_AdriValtCharacter.resx">
       <DependentUpon>202106090012154_AdriValtCharacter.cs</DependentUpon>
     </EmbeddedResource>
