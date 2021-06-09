@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FLAPI.Data;
 
 namespace FLAPI.Models
 {
@@ -20,6 +21,5 @@ namespace FLAPI.Models
         public string GameURL { get; set; }
         public int? HistoryId { get; set; }
         public string HistoryURL { get; set; }
-        public int? VaultId { get; set; }
     }
 }
