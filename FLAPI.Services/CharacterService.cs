@@ -111,7 +111,8 @@ namespace FLAPI.Services
                 }
                 return result;
             }
-        }public IEnumerable<CharacterListItem> GetAllCharactersByLocationId(int locationId)
+        }
+        public IEnumerable<CharacterListItem> GetAllCharactersByLocationId(int locationId)
         {
             using (var ctx = new ApplicationDbContext())
             {
