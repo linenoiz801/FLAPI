@@ -23,10 +23,10 @@ namespace FLAPI.WebAPI.Controllers
             var weapons = weaponService.GetWeapons();
             foreach (WeaponListItem h in weapons)
             {
-                if (h.HistoryURL != null)
+                if (h.HistoryId != null)
                     h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
 
-                if (h.GameURL != null)
+                if (h.GameId != null)
                     h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
             }
             return Ok(weapons);
@@ -37,10 +37,10 @@ namespace FLAPI.WebAPI.Controllers
             var weapons = weaponService.GetWeaponByGameId(gameId);
             foreach (WeaponListItem h in weapons)
             {
-                if (h.HistoryURL != null)
+                if (h.HistoryId != null)
                     h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
 
-                if (h.GameURL != null)
+                if (h.GameId != null)
                     h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
             }
             return Ok(weapons);
@@ -49,10 +49,10 @@ namespace FLAPI.WebAPI.Controllers
         {
             WeaponService weaponService = CreateWeaponService();
             var weapon = weaponService.GetWeaponById(weaponId);
-            if (weapon.HistoryURL != null)
+            if (weapon.HistoryId != null)
                 weapon.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + weapon.HistoryId;
 
-            if (weapon.GameURL != null)
+            if (weapon.GameId != null)
                 weapon.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + weapon.GameId;
             return Ok(weapon);
         }

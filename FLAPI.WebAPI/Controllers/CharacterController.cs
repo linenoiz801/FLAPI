@@ -38,6 +38,7 @@ namespace FLAPI.WebAPI.Controllers
 
                 if (h.GameId != null)
                     h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+
                 if (h.SpeciesId != null)
                     h.SpeciesURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Species?SpeciesId=" + h.SpeciesId;
             }
