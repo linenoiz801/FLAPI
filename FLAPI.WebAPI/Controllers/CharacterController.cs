@@ -33,13 +33,12 @@ namespace FLAPI.WebAPI.Controllers
             var characters = characterService.GetCharacters();
             foreach (CharacterListItem h in characters)
             {
-                if (h.HistoryURL != null)
+                if (h.HistoryId != null)
                     h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
 
-                if (h.GameURL != null)
+                if (h.GameId != null)
                     h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
-
-                if (h.SpeciesURL != null)
+                if (h.SpeciesId != null)
                     h.SpeciesURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Species?SpeciesId=" + h.SpeciesId;
             }
             return Ok(characters);
@@ -48,13 +47,13 @@ namespace FLAPI.WebAPI.Controllers
         {
             CharacterService characterService = CreateCharacterService();
             var character = characterService.GetCharacterById(characterId);
-                if (character.HistoryURL != null)
+                if (character.HistoryId != null)
                 character.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + character.HistoryId;
 
-                if (character.GameURL != null)
+                if (character.GameId != null)
                 character.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + character.GameId;
 
-                if (character.SpeciesURL != null)
+                if (character.SpeciesId != null)
                 character.SpeciesURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Species?SpeciesId=" + character.SpeciesId;
             return Ok(character);
         }
@@ -70,13 +69,13 @@ namespace FLAPI.WebAPI.Controllers
             var characters = characterService.GetCharacterByGameId(gameId);
             foreach (CharacterListItem h in characters)
             {
-                if (h.HistoryURL != null)
+                if (h.HistoryId != null)
                     h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
 
-                if (h.GameURL != null)
+                if (h.GameId != null)
                     h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
 
-                if (h.SpeciesURL != null)
+                if (h.SpeciesId != null)
                     h.SpeciesURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Species?SpeciesId=" + h.SpeciesId;
             }
             return Ok(characters);
