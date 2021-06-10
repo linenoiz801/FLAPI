@@ -9,9 +9,7 @@ namespace FLAPI.Models
 {
     public class GameCreate
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
+        
         public string GameName { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string Description { get; set; }
