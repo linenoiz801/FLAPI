@@ -82,7 +82,7 @@ namespace FLAPI.Services
                 var query =
                     ctx
                         .Weapons
-                        //.Where(e => e.GameId == gameId) //TODO: Cant do this part until the foreign keys are added
+                        .Where(e => e.GameId == gameId) //TODO: Cant do this part until the foreign keys are added
                         .Select(
                         e => new WeaponListItem
                         {
