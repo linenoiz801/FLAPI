@@ -104,7 +104,7 @@ namespace FLAPI.WebAPI.Controllers
          public IHttpActionResult GetCharactersByLocationId(int characterLocationId)
         {
             CharacterService characterService = CreateCharacterService();
-            var location = characterService.GetAllCharactersByLocationId(characterLocationId);
+            var location = characterService.GetCharactersByLocationId(characterLocationId);
             return Ok(location);
         
         }
