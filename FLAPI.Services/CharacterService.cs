@@ -87,14 +87,14 @@ namespace FLAPI.Services
                 return result;
             }
         }
-        public List<CharacterListItem> GetCharactersByLocationId(int gameId)
+        public List<CharacterListItem> GetCharactersByLocationId(int locationId)
         {
             List<CharacterListItem> result = new List<CharacterListItem>();
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx.Locations
-                    .Single(e => e.Id == gameId);
+                    .Single(e => e.Id == locationId);
 
                 foreach (Character c in query.ListOfCharacters)
                 {
@@ -139,7 +139,8 @@ namespace FLAPI.Services
                 return result;
             }
         }
-        public IEnumerable<CharacterListItem> GetAllCharactersByLocationId(int locationId)
+        /* First Draft of method used above
+         * public IEnumerable<CharacterListItem> GetAllCharactersByLocationId(int locationId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -153,6 +154,7 @@ namespace FLAPI.Services
                 return foundItems.ToArray();
             }
         }
+        */
         public List<CharacterListItem> GetCharacterByGameId(int gameId)
         {
             List<CharacterListItem> result = new List<CharacterListItem>();
