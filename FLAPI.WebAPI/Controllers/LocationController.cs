@@ -83,11 +83,11 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
-        public IHttpActionResult AddCharacterToLocation(int characterId, int characterLocationId)
+        public IHttpActionResult AddCharacterToLocation(int characterId, int locationId)
         {
             var service = CreateLocationService();
 
-            if (!service.AddCharacterToLocation(characterId, characterLocationId))
+            if (!service.AddCharacterToLocation(characterId, locationId))
                 return InternalServerError();
 
             return Ok();
@@ -101,10 +101,10 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
-         public IHttpActionResult GetCharactersByLocationId(int locationId)
+         public IHttpActionResult GetCharactersByLocationId(int characterLocationId)
         {
             CharacterService characterService = CreateCharacterService();
-            var location = characterService.GetAllCharactersByLocationId(locationId);
+            var location = characterService.GetAllCharactersByLocationId(characterLocationId);
             return Ok(location);
         
         }
