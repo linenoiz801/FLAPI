@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -28,6 +29,35 @@ namespace FLAPI.Data
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+        public DbSet<History> Histories { get; set; }
+        public DbSet<Perk> Perks { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Character> Characters { get; set; }
+        public DbSet<Weapon> Weapons { get; set; }
+        public DbSet<Game> Games { get; set; }
+        public DbSet<Armor> Armors { get; set; }
+        public DbSet<Vault> Vaults { get; set; }
+        public DbSet<Species> Species { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            /*
+             modelBuilder.Entity<Side>()
+                         .HasRequired(s => s.Stage)
+                         .WithMany()
+                         .WillCascadeOnDelete(false);
+             
+            modelBuilder.Entity<Game>()  
+                    .HasOptional(g => g.ListOfSpecies)
+                    .WithMany()
+                    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Species>()
+                    .HasOptional(g => g.ListOfGames)
+                    .WithMany()
+                    .WillCascadeOnDelete(false);
+            */
         }
     }
 }
