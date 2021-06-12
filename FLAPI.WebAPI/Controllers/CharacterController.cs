@@ -58,10 +58,10 @@ namespace FLAPI.WebAPI.Controllers
                 character.SpeciesURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Species?SpeciesId=" + character.SpeciesId;
             return Ok(character);
         }
-        public IHttpActionResult GetVaultsByCharacterId(int characterId)
+        public IHttpActionResult GetVaultsByCharacterId(int characterIdGetVaults)
         {
             VaultService vaultService = CreateVaultService();
-            var vaults = vaultService.GetAllVaultsByCharacterId(characterId);
+            var vaults = vaultService.GetAllVaultsByCharacterId(characterIdGetVaults);
             return Ok(vaults);
         }
         public IHttpActionResult GetCharactersByGameId(int gameId)
@@ -80,6 +80,13 @@ namespace FLAPI.WebAPI.Controllers
                     h.SpeciesURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Species?SpeciesId=" + h.SpeciesId;
             }
             return Ok(characters);
+        }
+        public IHttpActionResult GetLocationsByCharacterId(int characterIdGetLocations)
+        {
+            LocationService locationService = CreateLocationService();
+            var location = locationService.GetAllLocationsByCharacterId(characterIdGetLocations);
+            return Ok(location);
+
         }
         public IHttpActionResult Put(CharacterListItem model)
         {
@@ -132,13 +139,6 @@ namespace FLAPI.WebAPI.Controllers
                 return InternalServerError();
 
             return Ok();
-        }
-        public IHttpActionResult GetLocationsByCharacterId(int characterId)
-        {
-            LocationService locationService = CreateLocationService();
-            var location = locationService.GetAllLocationsByCharacterId(characterId);
-            return Ok(location);
-        
         }
     }
 }
