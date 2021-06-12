@@ -88,7 +88,7 @@ namespace FLAPI.WebAPI.Controllers
             var service = CreateLocationService();
 
             if (!service.AddCharacterToLocation(characterId, locationId))
-                return InternalServerError();
+               return InternalServerError();
 
             return Ok();
         }
