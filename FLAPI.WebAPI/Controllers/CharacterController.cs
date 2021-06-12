@@ -62,6 +62,13 @@ namespace FLAPI.WebAPI.Controllers
         {
             VaultService vaultService = CreateVaultService();
             var vaults = vaultService.GetAllVaultsByCharacterId(characterIdGetVaults);
+            foreach (VaultListItem h in vaults)
+            {
+                if (h.GameId != null)
+                    h.GameUrl = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+                if (h.LocationId != null)
+                    h.LocationUrl = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Location?LocationId=" + h.LocationId;
+            }
             return Ok(vaults);
         }
         public IHttpActionResult GetCharactersByGameId(int gameId)
@@ -84,7 +91,14 @@ namespace FLAPI.WebAPI.Controllers
         public IHttpActionResult GetLocationsByCharacterId(int characterIdGetLocations)
         {
             LocationService locationService = CreateLocationService();
-            var location = locationService.GetAllLocationsByCharacterId(characterIdGetLocations);
+            var location = locationService.GetLocationsByCharacterId(characterIdGetLocations);
+            foreach (LocationListItem h in location)
+            {
+                if (h.GameId != null)
+                    h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+                if (h.HistoryId != null)
+                    h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+            }
             return Ok(location);
 
         }

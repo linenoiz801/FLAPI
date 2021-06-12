@@ -50,6 +50,17 @@ namespace FLAPI.WebAPI.Controllers
         {
             CharacterService characterService = CreateCharacterService();
             var characters = characterService.GetAllCharactersByVaultId(characterVaultId);
+            foreach (CharacterListItem h in characters)
+            {
+                if (h.HistoryId != null)
+                    h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+
+                if (h.GameId != null)
+                    h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+
+                if (h.SpeciesId != null)
+                    h.SpeciesURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Species?SpeciesId=" + h.SpeciesId;
+            }
             return Ok(characters);
         }
         public IHttpActionResult GetVaultsByGameId(int gameId)
