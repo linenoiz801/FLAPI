@@ -76,16 +76,25 @@ namespace FLAPI.Services
         }
         public IEnumerable<VaultListItem> GetAllVaultsByCharacterId(int characterId)
         {
+            List<VaultListItem> result = new List<VaultListItem>();
             using (var ctx = new ApplicationDbContext())
             {
-                var foundItems =
-                    ctx.Characters.Single(c => c.CharacterId == characterId).ListOfVaults
-                    .Select(e => new VaultListItem
-                    {
-                        VaultId = e.Id
-                    }
-                    );
-                return foundItems.ToArray();
+                var query =
+                    ctx.Characters
+                    .Single(e => e.CharacterId == characterId);
+
+                foreach (Vault v in query.ListOfVaults)
+                {
+                    VaultListItem e = new VaultListItem();
+                    e.VaultId = v.Id;
+                    e.GameId = v.GameId;
+                    e.LocationId = v.LocationId;
+                    e.VaultName = v.VaultName;
+                    e.VaultNumber = v.VaultNumber;                    
+
+                    result.Add(e);
+                }
+                return result;
             }
         }
         public List<VaultListItem> GetVaultsByGameId(int gameId)

@@ -46,10 +46,10 @@ namespace FLAPI.WebAPI.Controllers
 
             return Ok();
         }
-        public IHttpActionResult GetCharactersByVaultId(int vaultId)
+        public IHttpActionResult GetCharactersByVaultId(int characterVaultId)
         {
             CharacterService characterService = CreateCharacterService();
-            var characters = characterService.GetAllCharactersByVaultId(vaultId);
+            var characters = characterService.GetAllCharactersByVaultId(characterVaultId);
             return Ok(characters);
         }
         public IHttpActionResult GetVaultsByGameId(int gameId)
