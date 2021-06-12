@@ -104,8 +104,19 @@ namespace FLAPI.WebAPI.Controllers
          public IHttpActionResult GetCharactersByLocationId(int characterLocationId)
         {
             CharacterService characterService = CreateCharacterService();
-            var location = characterService.GetCharactersByLocationId(characterLocationId);
-            return Ok(location);
+            var characters = characterService.GetCharactersByLocationId(characterLocationId);
+            foreach (CharacterListItem h in characters)
+            {
+                if (h.HistoryId != null)
+                    h.HistoryURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+
+                if (h.GameId != null)
+                    h.GameURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Game?GameId=" + h.GameId;
+
+                if (h.SpeciesId != null)
+                    h.SpeciesURL = "https://" + HttpContext.Current.Request.Url.Authority + "/api/Species?SpeciesId=" + h.SpeciesId;
+            }
+            return Ok(characters);
         
         }
     }

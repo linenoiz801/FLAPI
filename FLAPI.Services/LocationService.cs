@@ -124,12 +124,6 @@ namespace FLAPI.Services
 
             }
         }
-
-        public object GetAllLocationsByCharacterId(int characterId)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<LocationListItem> GetLocationByGameId(int GameId)
         {
             List<LocationListItem> result = new List<LocationListItem>();

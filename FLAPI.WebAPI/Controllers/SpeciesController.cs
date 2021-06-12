@@ -44,6 +44,11 @@ namespace FLAPI.WebAPI.Controllers
         {
             SpeciesService speciesService = CreateSpeciesService();
             var species = speciesService.GetSpeciesByGameId(gameId);
+            foreach (SpeciesListItem h in species)
+            {
+                if (h.HistoryId != null)
+                    h.HistoryUrl = "https://" + HttpContext.Current.Request.Url.Authority + "/api/History?HistoryId=" + h.HistoryId;
+            }
             return Ok(species);
         }
         public IHttpActionResult GetSpeciesById(int speciesId)
